@@ -1,3 +1,55 @@
 <resources>
     <string name="app_name">JAT</string>
+
+
+    <string name="splash_image">splash image</string>
+    <string name="toolbar_logo">toolbar_logo</string>
+
+    <string name="navigation_recents">Recents</string>
+    <string name="navigation_add">Add Register</string>
+    <string name="navigation_registers">Registers</string>
+
+    <string name="toolbar_bluetooth">Bluetooth</string>
+
+    <string name="fragment_recent_title">Fragment recents</string>
+    <string name="fragment_add_title">Fragment Add</string>
+    <string name="fragment_register_title">Fragment Register</string>
+
+    <string name="test_parameters">Test Parameters</string>
+
+    <string name="hint_date">Date</string>
+    <string name="hint_equipment">Equipment</string>
+    <string name="hint_serial">Serial</string>
+    <string name="hint_client">Client</string>
+    <string name="hint_range">Range</string>
+    <string name="hint_period">Period</string>
+
+    <string name="btn_start">START</string>
+    <string name="DeviceList_title">Device List</string>
+    <string name="system_status_title">System Status</string>
+    <string name="txt_sensor1">Sensor 1:</string>
+    <string name="NA">N/A</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_bluetooth_settings">BluetoothSettingsActivity</string>
+
+    <string name="toolbar_detail_title">Detail</string>
+    <string name="lbl_starttime">Start Time:</string>
+    <string name="lbl_id">ID:</string>
+    <string name="lbl_date">Date:</string>
+    <string name="lbl_endtime">End Time:</string>
+    <string name="lbl_equipment">Equipment:</string>
+    <string name="lbl_client">Client:</string>
+    <string name="lbl_serial">Serial:</string>
+    <string name="lbl_range">Range:</string>
+    <string name="lbl_period">Period:</string>
+    <string name="lbl_timestamp">Timestamp</string>
+    <string name="lbl_s1">S1</string>
+    <string name="lbl_s2">S2</string>
+    <string name="lbl_s3">S3</string>
+    <string name="lbl_s4">S4</string>
+    <string name="lbl_s5">S5</string>
+
+    <string name="lbl_search">Search</string>
+
 </resources>

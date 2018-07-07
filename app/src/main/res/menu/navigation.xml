@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_recents"
+        android:icon="@drawable/nav_recent"
+        android:title="@string/navigation_recents" />
+
+    <item
+        android:id="@+id/navigation_add"
+        android:icon="@drawable/nav_add"
+        android:title="@string/navigation_add" />
+
+    <item
+        android:id="@+id/navigation_registers"
+        android:icon="@drawable/nav_archive"
+        android:title="@string/navigation_registers" />
+
+</menu>
