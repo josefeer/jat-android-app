@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Splash">
+    android:id="@+id/container_b"
+    tools:context=".BluetoothActivity">
 
-    <ImageView
-        android:id="@+id/splash_image"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:contentDescription="@string/splash_image"
-        app:srcCompat="@drawable/splash_screen" />
+        android:id="@+id/base_frame_b">
 
+    </FrameLayout>
 </android.support.constraint.ConstraintLayout>

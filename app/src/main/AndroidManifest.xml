@@ -22,6 +22,21 @@
 
         <activity android:name=".MainActivity" />
 
+        <activity
+            android:name=".DetailActivity"
+            android:parentActivityName=".MainActivity"
+            />
+
+        <activity android:name=".BluetoothActivity" />
+
+        <service
+            android:name=".BTservice"
+            android:exported="false" />
+
+        <service
+            android:name=".RegisterTempService"
+            android:exported="false" />
+
     </application>
 
 </manifest>
