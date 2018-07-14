@@ -1,6 +1,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RecentsFragment">
@@ -16,6 +17,10 @@
             android:textSize="20sp"
             android:gravity="center"
             android:text="@string/fragment_recent_title"
+            android:background="@drawable/subtitle_gradient"
+            android:textColor="@color/subtitles"
+            android:textStyle="bold"
+            android:elevation="2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

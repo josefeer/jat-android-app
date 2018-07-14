@@ -5,28 +5,29 @@
     <string name="splash_image">splash image</string>
     <string name="toolbar_logo">toolbar_logo</string>
 
-    <string name="navigation_recents">Recents</string>
-    <string name="navigation_add">Add Register</string>
-    <string name="navigation_registers">Registers</string>
+    <string name="navigation_recents">Recientes</string>
+    <string name="navigation_add">Añadir</string>
+    <string name="navigation_registers">Registros</string>
 
     <string name="toolbar_bluetooth">Bluetooth</string>
 
-    <string name="fragment_recent_title">Fragment recents</string>
+    <string name="fragment_recent_title">Recientes</string>
     <string name="fragment_add_title">Fragment Add</string>
-    <string name="fragment_register_title">Fragment Register</string>
+    <string name="fragment_register_title">Registros</string>
 
-    <string name="test_parameters">Test Parameters</string>
+    <string name="add_subtitle2">Datos de la Caracterización</string>
+    <string name="add_subtitle3">Datos del Equipo</string>
 
     <string name="hint_date">Date</string>
-    <string name="hint_equipment">Equipment</string>
-    <string name="hint_serial">Serial</string>
-    <string name="hint_client">Client</string>
+    <string name="hint_equipment">Ej. incubadora, baño seco, etc.</string>
+    <string name="hint_serial">Ej. 1111, AB01, 02—000, etc.</string>
+    <string name="hint_client">Ej. CHSF, CSS, etc.</string>
     <string name="hint_range">Range</string>
     <string name="hint_period">Period</string>
 
     <string name="btn_start">START</string>
     <string name="DeviceList_title">Device List</string>
-    <string name="system_status_title">System Status</string>
+    <string name="system_status_title">Estado del Sistema</string>
     <string name="txt_sensor1">Sensor 1:</string>
     <string name="NA">N/A</string>
 
@@ -50,6 +51,16 @@
     <string name="lbl_s4">S4</string>
     <string name="lbl_s5">S5</string>
 
+    <string name="lbl_addfragment1">Tipo:</string>
+    <string name="lbl_addfragment2">Nombre Genérico del Equipo:</string>
+    <string name="lbl_addfragment3">Numero de Serie o Activo:</string>
+    <string name="lbl_addfragment4">Nombre del Cliente:</string>
+    <string name="lbl_addfragment5">Tiempo del Ensayo</string>
+    <string name="lbl_addfragment7">Tiempo de Estabilización</string>
+    <string name="lbl_addfragment9">Capturar Temperatura cada:</string>
+    <string name="lbl_addfragment_minutos">Minutos:</string>
+
     <string name="lbl_search">Search</string>
+    <string name="test">TEST</string>
 
 </resources>

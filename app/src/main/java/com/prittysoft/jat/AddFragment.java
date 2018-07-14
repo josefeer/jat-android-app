@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
@@ -32,12 +33,11 @@ import java.util.Locale;
 public class AddFragment extends Fragment {
 
     //widgets
-    EditText etxt_equipment, etxt_serial, etxt_client,
-    etxt_range_test, etxt_period;
+    EditText etxt_equipment, etxt_serial, etxt_client;
     Button btn_add;
     TextView s1_value;
     ProgressBar progressBar;
-    Spinner type_spinner, range_spinner, period_spinner, timeunits_spinner1, timeunits_spinner2;
+    Spinner type_spinner, range_spinner, period_spinner;
 
     //Database Class
     DatabaseHelper mDatabaseHelper;
@@ -55,6 +55,8 @@ public class AddFragment extends Fragment {
     SimpleDateFormat timezone = new SimpleDateFormat("z", Locale.US);
 
 
+
+
     public AddFragment() {
         // Required empty public constructor
     }
@@ -66,7 +68,7 @@ public class AddFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
@@ -79,11 +81,11 @@ public class AddFragment extends Fragment {
         s1_value = v.findViewById(R.id.txt_s1_value);
         progressBar = v.findViewById(R.id.progressBar);
         type_spinner = v.findViewById(R.id.sp_test_type);
-        range_spinner = v.findViewById(R.id.spinner_range);
-        period_spinner = v.findViewById(R.id.spinner_period);
-        timeunits_spinner1 = v.findViewById(R.id.spinner_range_units);
-        timeunits_spinner2 = v.findViewById(R.id.spinner_period_units);
+        range_spinner = v.findViewById(R.id.spinner_tiempodelensayo);
+        period_spinner = v.findViewById(R.id.spinner_tiempodecaptura);
 
+
+        //ArrayAdapters for spinners
         ArrayAdapter<CharSequence> type_adapter = ArrayAdapter.createFromResource(getContext(),
                 R.array.test_types, android.R.layout.simple_spinner_item);
 
@@ -93,20 +95,13 @@ public class AddFragment extends Fragment {
         ArrayAdapter<CharSequence> period_adapter = ArrayAdapter.createFromResource(getContext(),
                 R.array.period_values, android.R.layout.simple_spinner_item);
 
-        ArrayAdapter<CharSequence> timeunits_adapter = ArrayAdapter.createFromResource(getContext(),
-                R.array.time_units, android.R.layout.simple_spinner_item);
-
         type_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         range_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         period_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        timeunits_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         type_spinner.setAdapter(type_adapter);
         range_spinner.setAdapter(range_adapter);
         period_spinner.setAdapter(period_adapter);
-        timeunits_spinner1.setAdapter(timeunits_adapter);
-        timeunits_spinner2.setAdapter(timeunits_adapter);
-
 
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,9 +138,7 @@ public class AddFragment extends Fragment {
         Date start_timestamp = new Date();
 
         String value_range = range_spinner.getSelectedItem().toString();
-        String value_range_unit = timeunits_spinner1.getSelectedItem().toString();
         String value_period = period_spinner.getSelectedItem().toString();
-        String value_period_unit = timeunits_spinner2.getSelectedItem().toString();
         String value_date = date_format.format(start_timestamp);
         String value_equipment = etxt_equipment.getText().toString();
         String value_serial = etxt_serial.getText().toString();
@@ -155,9 +148,7 @@ public class AddFragment extends Fragment {
 
         RegisterTempIntent = new Intent(getContext(), RegisterTempService.class);
         RegisterTempIntent.putExtra("value_range", value_range);
-        RegisterTempIntent.putExtra("value_range_unit", value_range_unit);
         RegisterTempIntent.putExtra("value_period", value_period);
-        RegisterTempIntent.putExtra("value_period_unit", value_period_unit);
         RegisterTempIntent.putExtra("value_date", value_date);
         RegisterTempIntent.putExtra("value_equipment", value_equipment);
         RegisterTempIntent.putExtra("value_serial", value_serial);

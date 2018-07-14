@@ -54,9 +54,9 @@ public class RegisterTempService extends IntentService {
         String value_serial = intent.getStringExtra("value_serial");
         String value_client = intent.getStringExtra("value_client");
         Integer value_range = Integer.parseInt(intent.getStringExtra("value_range"));
-        String value_range_units = intent.getStringExtra("value_range_unit");
+        String value_range_units = null;
         Integer value_period = Integer.parseInt(intent.getStringExtra("value_period"));
-        String value_period_units = intent.getStringExtra("value_period_units");
+        String value_period_units = null;
         String value_type = intent.getStringExtra("value_type");
 
         String S1, value_progressbar;
