@@ -28,7 +28,15 @@
     <string name="btn_start">START</string>
     <string name="DeviceList_title">Device List</string>
     <string name="system_status_title">Estado del Sistema</string>
-    <string name="txt_sensor1">Sensor 1:</string>
+    <string name="addfragment_lbl_s1">Sensor 1:</string>
+    <string name="addfragment_lbl_s2">Sensor 2:</string>
+    <string name="addfragment_lbl_s3">Sensor 3:</string>
+    <string name="addfragment_lbl_s4">Sensor 4:</string>
+    <string name="addfragment_lbl_s5">Sensor 5:</string>
+    <string name="addfragment_lbl_s6">Sensor 6:</string>
+    <string name="addfragment_lbl_s7">Sensor 7:</string>
+    <string name="addfragment_lbl_s8">Sensor 8:</string>
+    <string name="addfragment_lbl_s9">Sensor 9:</string>
     <string name="NA">N/A</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -55,10 +63,10 @@
     <string name="lbl_addfragment2">Nombre Genérico del Equipo:</string>
     <string name="lbl_addfragment3">Numero de Serie o Activo:</string>
     <string name="lbl_addfragment4">Nombre del Cliente:</string>
-    <string name="lbl_addfragment5">Tiempo del Ensayo</string>
-    <string name="lbl_addfragment7">Tiempo de Estabilización</string>
+    <string name="lbl_addfragment5">Tiempo del Ensayo:</string>
+    <string name="lbl_addfragment7">Tiempo de Estabilización:</string>
     <string name="lbl_addfragment9">Capturar Temperatura cada:</string>
-    <string name="lbl_addfragment_minutos">Minutos:</string>
+    <string name="lbl_addfragment_minutos">Minutos</string>
 
     <string name="lbl_search">Search</string>
     <string name="test">TEST</string>

@@ -1,301 +1,462 @@
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/add_container"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/system_status_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/subtitle_gradient"
-        android:elevation="2dp"
-        android:gravity="center"
-        android:text="@string/system_status_title"
-        android:textColor="@color/subtitles"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/add_subcontainer1"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:layout_constraintBottom_toTopOf="@id/add_subtitle2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/system_status_title">
-
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/txt_s1_title"
-            android:layout_width="wrap_content"
+            android:id="@+id/system_status_title"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:text="@string/txt_sensor1"
-            app:layout_constraintEnd_toStartOf="@id/txt_s1_value"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:background="@drawable/subtitle_gradient"
+            android:elevation="2dp"
+            android:gravity="center"
+            android:text="@string/system_status_title"
+            android:textColor="@color/subtitles"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/add_subcontainer1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/addfragment_lbl_s1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/addfragment_lbl_s1"
+                android:gravity="center"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/addfragment_lbl_s1_value"/>
+
+            <TextView
+                android:id="@+id/addfragment_lbl_s1_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/NA"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="@id/addfragment_lbl_s1"
+                app:layout_constraintBottom_toBottomOf="@id/addfragment_lbl_s1"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/addfragment_lbl_s1"/>
+
+            <TextView
+                android:id="@+id/addfragment_lbl_s2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/addfragment_lbl_s2"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/addfragment_lbl_s1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/addfragment_lbl_s2_value"/>
+
+            <TextView
+                android:id="@+id/addfragment_lbl_s2_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/NA"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="@id/addfragment_lbl_s2"
+                app:layout_constraintBottom_toBottomOf="@id/addfragment_lbl_s2"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/addfragment_lbl_s2"/>
+
+            <TextView
+                android:id="@+id/addfragment_lbl_s3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/addfragment_lbl_s3"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/addfragment_lbl_s2"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/addfragment_lbl_s3_value"/>
+
+            <TextView
+                android:id="@+id/addfragment_lbl_s3_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/NA"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="@id/addfragment_lbl_s3"
+                app:layout_constraintBottom_toBottomOf="@id/addfragment_lbl_s3"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/addfragment_lbl_s3"/>
+
+            <TextView
+                android:id="@+id/addfragment_lbl_s4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/addfragment_lbl_s4"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/addfragment_lbl_s3"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/addfragment_lbl_s4_value"/>
+
+            <TextView
+                android:id="@+id/addfragment_lbl_s4_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/NA"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="@id/addfragment_lbl_s4"
+                app:layout_constraintBottom_toBottomOf="@id/addfragment_lbl_s4"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/addfragment_lbl_s3"/>
+
+            <TextView
+                android:id="@+id/addfragment_lbl_s5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/addfragment_lbl_s5"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/addfragment_lbl_s4"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/addfragment_lbl_s5_value"/>
+
+            <TextView
+                android:id="@+id/addfragment_lbl_s5_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/NA"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="@id/addfragment_lbl_s5"
+                app:layout_constraintBottom_toBottomOf="@id/addfragment_lbl_s5"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/addfragment_lbl_s5"/>
+
+            <TextView
+                android:id="@+id/addfragment_lbl_s6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/addfragment_lbl_s6"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/addfragment_lbl_s5"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/addfragment_lbl_s6_value"/>
+
+            <TextView
+                android:id="@+id/addfragment_lbl_s6_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/NA"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="@id/addfragment_lbl_s6"
+                app:layout_constraintBottom_toBottomOf="@id/addfragment_lbl_s6"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/addfragment_lbl_s3"/>
+
+            <TextView
+                android:id="@+id/addfragment_lbl_s7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/addfragment_lbl_s7"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/addfragment_lbl_s6"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/addfragment_lbl_s7_value"/>
+
+            <TextView
+                android:id="@+id/addfragment_lbl_s7_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/NA"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="@id/addfragment_lbl_s7"
+                app:layout_constraintBottom_toBottomOf="@id/addfragment_lbl_s7"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/addfragment_lbl_s7"/>
+
+            <TextView
+                android:id="@+id/addfragment_lbl_s8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/addfragment_lbl_s8"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/addfragment_lbl_s7"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/addfragment_lbl_s8_value"/>
+
+            <TextView
+                android:id="@+id/addfragment_lbl_s8_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/NA"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="@id/addfragment_lbl_s8"
+                app:layout_constraintBottom_toBottomOf="@id/addfragment_lbl_s8"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/addfragment_lbl_s3"/>
+
+            <TextView
+                android:id="@+id/addfragment_lbl_s9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/addfragment_lbl_s9"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/addfragment_lbl_s8"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/addfragment_lbl_s9_value"/>
+
+            <TextView
+                android:id="@+id/addfragment_lbl_s9_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/NA"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="@id/addfragment_lbl_s9"
+                app:layout_constraintBottom_toBottomOf="@id/addfragment_lbl_s9"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/addfragment_lbl_s9"/>
+
+        </android.support.constraint.ConstraintLayout>
 
         <TextView
-            android:id="@+id/txt_s1_value"
-            android:layout_width="wrap_content"
+            android:id="@+id/add_subtitle2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:text="@string/NA"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/txt_s1_title" />
+            android:background="@drawable/subtitle_gradient"
+            android:elevation="2dp"
+            android:gravity="center"
+            android:text="@string/add_subtitle2"
+            android:textColor="@color/subtitles"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
 
-    </android.support.constraint.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/add_subtitle2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/subtitle_gradient"
-        android:elevation="2dp"
-        android:gravity="center"
-        android:text="@string/add_subtitle2"
-        android:textColor="@color/subtitles"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/add_subcontainer2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/add_subcontainer1" />
-
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/add_subcontainer2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/add_subtitle3"
-        app:layout_constraintTop_toBottomOf="@id/add_subtitle2">
-
-        <TextView
-            android:id="@+id/lbl_addfragment1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/lbl_addfragment1"
-            app:layout_constraintBottom_toBottomOf="@id/sp_test_type"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/sp_test_type"
-            app:layout_constraintTop_toTopOf="@id/sp_test_type" />
-
-
-        <Spinner
-            android:id="@+id/sp_test_type"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintRight_toRightOf="parent" />
-
-        <TextView
-            android:id="@+id/lbl_addfragment5"
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/add_subcontainer2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:gravity="center"
-            android:text="@string/lbl_addfragment5"
-            app:layout_constraintTop_toBottomOf="@+id/lbl_addfragment1" />
+            app:layout_constraintBottom_toTopOf="@id/add_subtitle3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/add_subtitle2">
 
+            <TextView
+                android:id="@+id/lbl_addfragment1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="@string/lbl_addfragment1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/addfragment_sp1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="viewEnd"
+                app:layout_constraintTop_toTopOf="@id/lbl_addfragment1"
+                app:layout_constraintBottom_toBottomOf="@id/lbl_addfragment1"
+                app:layout_constraintRight_toRightOf="@id/addfragment_sp2" />
+
+            <TextView
+                android:id="@+id/lbl_addfragment5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="@string/lbl_addfragment5"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_addfragment1" />
+
+            <Spinner
+                android:id="@+id/addfragment_sp2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="viewEnd"
+                app:layout_constraintTop_toTopOf="@id/lbl_addfragment5"
+                app:layout_constraintBottom_toBottomOf="@id/lbl_addfragment5"
+                app:layout_constraintLeft_toRightOf="@id/lbl_addfragment5"
+                app:layout_constraintRight_toLeftOf="@id/lbl_addfragment6"/>
+
+            <TextView
+                android:id="@+id/lbl_addfragment6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:text="@string/lbl_addfragment_minutos"
+                app:layout_constraintBottom_toBottomOf="@id/lbl_addfragment5"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/lbl_addfragment5" />
+
+            <TextView
+                android:id="@+id/lbl_addfragment7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="@string/lbl_addfragment7"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_addfragment6" />
+
+            <Spinner
+                android:id="@+id/addfragment_sp3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="viewEnd"
+                app:layout_constraintTop_toTopOf="@id/lbl_addfragment7"
+                app:layout_constraintBottom_toBottomOf="@id/lbl_addfragment7"
+                app:layout_constraintLeft_toRightOf="@id/lbl_addfragment7"
+                app:layout_constraintRight_toLeftOf="@id/lbl_addfragment8"/>
+
+            <TextView
+                android:id="@+id/lbl_addfragment8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:text="@string/lbl_addfragment_minutos"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="@id/lbl_addfragment6"
+                app:layout_constraintBottom_toBottomOf="@id/lbl_addfragment7"
+                app:layout_constraintTop_toTopOf="@id/lbl_addfragment7" />
+
+            <TextView
+                android:id="@+id/lbl_addfragment9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="@string/lbl_addfragment9"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_addfragment8" />
+
+            <Spinner
+                android:id="@+id/addfragment_sp4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="viewEnd"
+                app:layout_constraintTop_toTopOf="@id/lbl_addfragment9"
+                app:layout_constraintBottom_toBottomOf="@id/lbl_addfragment9"
+                app:layout_constraintLeft_toRightOf="@id/lbl_addfragment9"
+                app:layout_constraintRight_toLeftOf="@id/lbl_addfragment10"/>
+
+            <TextView
+                android:id="@+id/lbl_addfragment10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:text="@string/lbl_addfragment_minutos"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="@id/lbl_addfragment6"
+                app:layout_constraintBottom_toBottomOf="@id/lbl_addfragment9"
+                app:layout_constraintTop_toTopOf="@id/lbl_addfragment9" />
+
+        </android.support.constraint.ConstraintLayout>
 
         <TextView
-            android:id="@+id/lbl_addfragment6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center"
-            android:text="@string/lbl_addfragment_minutos"
-            app:layout_constraintBottom_toBottomOf="@id/spinner_tiempodelensayo"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/spinner_tiempodelensayo"
-            app:layout_constraintTop_toBottomOf="@+id/lbl_addfragment5"
-            app:layout_constraintTop_toTopOf="@id/spinner_tiempodelensayo" />
-
-
-        <Spinner
-            android:id="@+id/spinner_tiempodelensayo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/lbl_addfragment5" />
-
-        <TextView
-            android:id="@+id/lbl_addfragment7"
+            android:id="@+id/add_subtitle3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:background="@drawable/subtitle_gradient"
+            android:elevation="2dp"
             android:gravity="center"
-            android:text="@string/lbl_addfragment7"
-            app:layout_constraintTop_toBottomOf="@+id/lbl_addfragment6" />
+            android:text="@string/add_subtitle3"
+            android:textColor="@color/subtitles"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
 
-
-        <TextView
-            android:id="@+id/lbl_addfragment8"
-            android:layout_width="wrap_content"
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/add_subcontainer3"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center"
-            android:text="@string/lbl_addfragment_minutos"
-            app:layout_constraintBottom_toBottomOf="@id/spinner_tiempoestabilizacion"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/spinner_tiempoestabilizacion"
-            app:layout_constraintTop_toBottomOf="@+id/lbl_addfragment7"
-            app:layout_constraintTop_toTopOf="@id/spinner_tiempoestabilizacion" />
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/lbl_addfragment2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="@string/lbl_addfragment2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+
+            <EditText
+                android:id="@+id/etxt_equipment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_equipment"
+                android:inputType="text"
+                android:layout_margin="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/lbl_addfragment2" />
+
+            <TextView
+                android:id="@+id/lbl_addfragment3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="@string/lbl_addfragment3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etxt_equipment" />
+
+            <EditText
+                android:id="@+id/etxt_serial"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_serial"
+                android:inputType="text"
+                android:layout_margin="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_addfragment3" />
+
+            <TextView
+                android:id="@+id/lbl_addfragment4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="@string/lbl_addfragment4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etxt_serial" />
+
+            <EditText
+                android:id="@+id/etxt_client"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_client"
+                android:inputType="text"
+                android:layout_margin="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_addfragment4" />
 
 
-        <Spinner
-            android:id="@+id/spinner_tiempoestabilizacion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/lbl_addfragment7" />
+            <Button
+                android:id="@+id/btn_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/btn_start"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etxt_client" />
 
-        <TextView
-            android:id="@+id/lbl_addfragment9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center"
-            android:text="@string/lbl_addfragment9"
-            app:layout_constraintTop_toBottomOf="@+id/lbl_addfragment8" />
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:maxHeight="20dp"
+                android:minHeight="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_add" />
 
-        <TextView
-            android:id="@+id/lbl_addfragment10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center"
-            android:text="@string/lbl_addfragment_minutos"
-            app:layout_constraintBottom_toBottomOf="@id/spinner_tiempodecaptura"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/spinner_tiempodecaptura"
-            app:layout_constraintTop_toBottomOf="@+id/lbl_addfragment9"
-            app:layout_constraintTop_toTopOf="@id/spinner_tiempodecaptura" />
+        </android.support.constraint.ConstraintLayout>
 
-        <Spinner
-            android:id="@+id/spinner_tiempodecaptura"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/lbl_addfragment9" />
+    </LinearLayout>
 
-    </android.support.constraint.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/add_subtitle3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/subtitle_gradient"
-        android:elevation="2dp"
-        android:gravity="center"
-        android:text="@string/add_subtitle3"
-        android:textColor="@color/subtitles"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/add_subcontainer3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/add_subcontainer2" />
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/add_subcontainer3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/add_subtitle3">
-
-        <TextView
-            android:id="@+id/lbl_addfragment2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="start"
-            android:text="@string/lbl_addfragment2" />
-
-
-        <EditText
-            android:id="@+id/etxt_equipment"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_equipment"
-            android:inputType="text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/lbl_addfragment2" />
-
-        <TextView
-            android:id="@+id/lbl_addfragment3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="start"
-            android:text="@string/lbl_addfragment3"
-            app:layout_constraintTop_toBottomOf="@id/etxt_equipment" />
-
-        <EditText
-            android:id="@+id/etxt_serial"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_serial"
-            android:inputType="text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lbl_addfragment3" />
-
-        <TextView
-            android:id="@+id/lbl_addfragment4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="start"
-            android:text="@string/lbl_addfragment4"
-            app:layout_constraintTop_toBottomOf="@id/etxt_serial" />
-
-        <EditText
-            android:id="@+id/etxt_client"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_client"
-            android:inputType="text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lbl_addfragment4" />
-
-
-        <Button
-            android:id="@+id/btn_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/btn_start"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etxt_client" />
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:maxHeight="20dp"
-            android:minHeight="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_add" />
-
-    </android.support.constraint.ConstraintLayout>
-
-
-</android.support.constraint.ConstraintLayout>
+</ScrollView>
 
 

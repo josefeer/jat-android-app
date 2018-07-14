@@ -37,7 +37,7 @@ public class AddFragment extends Fragment {
     Button btn_add;
     TextView s1_value;
     ProgressBar progressBar;
-    Spinner type_spinner, range_spinner, period_spinner;
+    Spinner sp1, sp2, sp3, sp4;
 
     //Database Class
     DatabaseHelper mDatabaseHelper;
@@ -78,30 +78,35 @@ public class AddFragment extends Fragment {
         etxt_equipment = v.findViewById(R.id.etxt_equipment);
         etxt_serial = v.findViewById(R.id.etxt_serial);
         etxt_client = v.findViewById(R.id.etxt_client);
-        s1_value = v.findViewById(R.id.txt_s1_value);
+        s1_value = v.findViewById(R.id.addfragment_lbl_s1_value);
         progressBar = v.findViewById(R.id.progressBar);
-        type_spinner = v.findViewById(R.id.sp_test_type);
-        range_spinner = v.findViewById(R.id.spinner_tiempodelensayo);
-        period_spinner = v.findViewById(R.id.spinner_tiempodecaptura);
-
+        sp1 = v.findViewById(R.id.addfragment_sp1);
+        sp2 = v.findViewById(R.id.addfragment_sp2);
+        sp3 = v.findViewById(R.id.addfragment_sp3);
+        sp4 = v.findViewById(R.id.addfragment_sp4);
 
         //ArrayAdapters for spinners
-        ArrayAdapter<CharSequence> type_adapter = ArrayAdapter.createFromResource(getContext(),
-                R.array.test_types, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> SpinnerAdapter1 = ArrayAdapter.createFromResource(getContext(),
+                R.array.valorestiposensayos, android.R.layout.simple_spinner_item);
 
-        ArrayAdapter<CharSequence> range_adapter = ArrayAdapter.createFromResource(getContext(),
-                R.array.range_values, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> SpinnerAdapter2 = ArrayAdapter.createFromResource(getContext(),
+                R.array.valoresensayos, android.R.layout.simple_spinner_item);
 
-        ArrayAdapter<CharSequence> period_adapter = ArrayAdapter.createFromResource(getContext(),
-                R.array.period_values, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> SpinnerAdapter3 = ArrayAdapter.createFromResource(getContext(),
+                R.array.valoresestabilizacion, android.R.layout.simple_spinner_item);
 
-        type_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        range_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        period_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<CharSequence> SpinnerAdapter4 = ArrayAdapter.createFromResource(getContext(),
+                R.array.valoresdecaptura, android.R.layout.simple_spinner_item);
 
-        type_spinner.setAdapter(type_adapter);
-        range_spinner.setAdapter(range_adapter);
-        period_spinner.setAdapter(period_adapter);
+        SpinnerAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        SpinnerAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        SpinnerAdapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        SpinnerAdapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        sp1.setAdapter(SpinnerAdapter1);
+        sp2.setAdapter(SpinnerAdapter2);
+        sp3.setAdapter(SpinnerAdapter3);
+        sp4.setAdapter(SpinnerAdapter4);
 
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,14 +142,14 @@ public class AddFragment extends Fragment {
         IntentFilter filter2 = new IntentFilter("RegisterTemp");
         Date start_timestamp = new Date();
 
-        String value_range = range_spinner.getSelectedItem().toString();
-        String value_period = period_spinner.getSelectedItem().toString();
+        String value_range = sp2.getSelectedItem().toString();
+        String value_period = sp3.getSelectedItem().toString();
         String value_date = date_format.format(start_timestamp);
         String value_equipment = etxt_equipment.getText().toString();
         String value_serial = etxt_serial.getText().toString();
         String value_client = etxt_client.getText().toString();
         String value_datetime = hour_format.format(start_timestamp);
-        String value_type = type_spinner.getSelectedItem().toString();
+        String value_type = sp1.getSelectedItem().toString();
 
         RegisterTempIntent = new Intent(getContext(), RegisterTempService.class);
         RegisterTempIntent.putExtra("value_range", value_range);
