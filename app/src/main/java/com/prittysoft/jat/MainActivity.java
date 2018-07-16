@@ -104,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
     protected BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
 
         String BTservice;

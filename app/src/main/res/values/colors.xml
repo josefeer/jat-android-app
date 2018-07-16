@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="sigcsa_primary">#9A6828</color>
     <color name="subtitles">#ffffff</color>
+    <color name="mainbutton">#33cc00</color>
 </resources>

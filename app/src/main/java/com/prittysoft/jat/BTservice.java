@@ -3,6 +3,7 @@ package com.prittysoft.jat;
 import android.app.IntentService;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;

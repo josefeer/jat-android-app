@@ -9,6 +9,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,29 +34,30 @@ import java.util.Locale;
 
 public class AddFragment extends Fragment {
 
-    //widgets
-    EditText etxt_equipment, etxt_serial, etxt_client;
+    // widgets
+    EditText etxt_equipment, etxt_serial, etxt_client, etxt_model;
     Button btn_add;
     TextView s1_value;
     ProgressBar progressBar;
     Spinner sp1, sp2, sp3, sp4;
 
-    //Database Class
+    // Database Class
     DatabaseHelper mDatabaseHelper;
 
-    //Intent
+    // Intent
     Intent RegisterTempIntent;
 
-    //Receivers
+    // Receivers
     BroadcastReceiver mMessageReceiver = new mMessageReceiver();
     BroadcastReceiver RegisterTempReceiver = new RegisterTempReceiver();
 
-    //DateFormat for timestamp
+    // DateFormat for timestamp
     SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
     SimpleDateFormat hour_format = new SimpleDateFormat("k:mm:ss", Locale.US);
     SimpleDateFormat timezone = new SimpleDateFormat("z", Locale.US);
 
-
+    // ArrayAdapters
+    ArrayAdapter<CharSequence> SpinnerAdapter1, SpinnerAdapter2, SpinnerAdapter3, SpinnerAdapter4;
 
 
     public AddFragment() {
@@ -68,6 +71,23 @@ public class AddFragment extends Fragment {
     }
 
     @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        SpinnerAdapter1 = ArrayAdapter.createFromResource(context,
+                R.array.valorestiposensayos, android.R.layout.simple_spinner_item);
+
+        SpinnerAdapter2 = ArrayAdapter.createFromResource(context,
+                R.array.valoresensayos, android.R.layout.simple_spinner_item);
+
+        SpinnerAdapter3 = ArrayAdapter.createFromResource(context,
+                R.array.valoresestabilizacion, android.R.layout.simple_spinner_item);
+
+        SpinnerAdapter4 = ArrayAdapter.createFromResource(context,
+                R.array.valoresdecaptura, android.R.layout.simple_spinner_item);
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -75,28 +95,20 @@ public class AddFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_add, container, false);
 
         btn_add = v.findViewById(R.id.btn_add);
+
         etxt_equipment = v.findViewById(R.id.etxt_equipment);
+        etxt_model = v.findViewById(R.id.etxt_modelo);
         etxt_serial = v.findViewById(R.id.etxt_serial);
         etxt_client = v.findViewById(R.id.etxt_client);
+
         s1_value = v.findViewById(R.id.addfragment_lbl_s1_value);
+
         progressBar = v.findViewById(R.id.progressBar);
+
         sp1 = v.findViewById(R.id.addfragment_sp1);
         sp2 = v.findViewById(R.id.addfragment_sp2);
         sp3 = v.findViewById(R.id.addfragment_sp3);
         sp4 = v.findViewById(R.id.addfragment_sp4);
-
-        //ArrayAdapters for spinners
-        ArrayAdapter<CharSequence> SpinnerAdapter1 = ArrayAdapter.createFromResource(getContext(),
-                R.array.valorestiposensayos, android.R.layout.simple_spinner_item);
-
-        ArrayAdapter<CharSequence> SpinnerAdapter2 = ArrayAdapter.createFromResource(getContext(),
-                R.array.valoresensayos, android.R.layout.simple_spinner_item);
-
-        ArrayAdapter<CharSequence> SpinnerAdapter3 = ArrayAdapter.createFromResource(getContext(),
-                R.array.valoresestabilizacion, android.R.layout.simple_spinner_item);
-
-        ArrayAdapter<CharSequence> SpinnerAdapter4 = ArrayAdapter.createFromResource(getContext(),
-                R.array.valoresdecaptura, android.R.layout.simple_spinner_item);
 
         SpinnerAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         SpinnerAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -107,6 +119,11 @@ public class AddFragment extends Fragment {
         sp2.setAdapter(SpinnerAdapter2);
         sp3.setAdapter(SpinnerAdapter3);
         sp4.setAdapter(SpinnerAdapter4);
+
+        etxt_equipment.addTextChangedListener(verify_data);
+        etxt_model.addTextChangedListener(verify_data);
+        etxt_serial.addTextChangedListener(verify_data);
+        etxt_client.addTextChangedListener(verify_data);
 
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,7 +155,7 @@ public class AddFragment extends Fragment {
         super.onDestroy();
     }
 
-    private void btn_addAction(){
+    private void btn_addAction() {
         IntentFilter filter2 = new IntentFilter("RegisterTemp");
         Date start_timestamp = new Date();
 
@@ -166,6 +183,29 @@ public class AddFragment extends Fragment {
         getContext().startService(RegisterTempIntent);
         LocalBroadcastManager.getInstance(getContext()).registerReceiver(RegisterTempReceiver, filter2);
     }
+
+    private TextWatcher verify_data = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            String equipment = etxt_equipment.getText().toString().trim();
+            String model = etxt_model.getText().toString().trim();
+            String serial = etxt_serial.getText().toString().trim();
+            String client = etxt_client.getText().toString().trim();
+
+            btn_add.setEnabled(!equipment.isEmpty() && !model.isEmpty() && !serial.isEmpty() &&
+            !client.isEmpty());
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
 
     //BrodcastReceiver from BTservice
     private class mMessageReceiver extends BroadcastReceiver {

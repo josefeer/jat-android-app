@@ -31,189 +31,189 @@
                 android:id="@+id/addfragment_lbl_s1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/addfragment_lbl_s1"
                 android:gravity="center"
+                android:text="@string/addfragment_lbl_s1"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/addfragment_lbl_s1_value"/>
+                app:layout_constraintRight_toLeftOf="@id/addfragment_lbl_s1_value" />
 
             <TextView
                 android:id="@+id/addfragment_lbl_s1_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/NA"
                 android:gravity="center"
-                app:layout_constraintTop_toTopOf="@id/addfragment_lbl_s1"
+                android:text="@string/NA"
                 app:layout_constraintBottom_toBottomOf="@id/addfragment_lbl_s1"
+                app:layout_constraintLeft_toRightOf="@id/addfragment_lbl_s1"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/addfragment_lbl_s1"/>
+                app:layout_constraintTop_toTopOf="@id/addfragment_lbl_s1" />
 
             <TextView
                 android:id="@+id/addfragment_lbl_s2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/addfragment_lbl_s2"
                 android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/addfragment_lbl_s1"
+                android:text="@string/addfragment_lbl_s2"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/addfragment_lbl_s2_value"/>
+                app:layout_constraintRight_toLeftOf="@id/addfragment_lbl_s2_value"
+                app:layout_constraintTop_toBottomOf="@id/addfragment_lbl_s1" />
 
             <TextView
                 android:id="@+id/addfragment_lbl_s2_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/NA"
                 android:gravity="center"
-                app:layout_constraintTop_toTopOf="@id/addfragment_lbl_s2"
+                android:text="@string/NA"
                 app:layout_constraintBottom_toBottomOf="@id/addfragment_lbl_s2"
+                app:layout_constraintLeft_toRightOf="@id/addfragment_lbl_s2"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/addfragment_lbl_s2"/>
+                app:layout_constraintTop_toTopOf="@id/addfragment_lbl_s2" />
 
             <TextView
                 android:id="@+id/addfragment_lbl_s3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/addfragment_lbl_s3"
                 android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/addfragment_lbl_s2"
+                android:text="@string/addfragment_lbl_s3"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/addfragment_lbl_s3_value"/>
+                app:layout_constraintRight_toLeftOf="@id/addfragment_lbl_s3_value"
+                app:layout_constraintTop_toBottomOf="@id/addfragment_lbl_s2" />
 
             <TextView
                 android:id="@+id/addfragment_lbl_s3_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/NA"
                 android:gravity="center"
-                app:layout_constraintTop_toTopOf="@id/addfragment_lbl_s3"
+                android:text="@string/NA"
                 app:layout_constraintBottom_toBottomOf="@id/addfragment_lbl_s3"
+                app:layout_constraintLeft_toRightOf="@id/addfragment_lbl_s3"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/addfragment_lbl_s3"/>
+                app:layout_constraintTop_toTopOf="@id/addfragment_lbl_s3" />
 
             <TextView
                 android:id="@+id/addfragment_lbl_s4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/addfragment_lbl_s4"
                 android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/addfragment_lbl_s3"
+                android:text="@string/addfragment_lbl_s4"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/addfragment_lbl_s4_value"/>
+                app:layout_constraintRight_toLeftOf="@id/addfragment_lbl_s4_value"
+                app:layout_constraintTop_toBottomOf="@id/addfragment_lbl_s3" />
 
             <TextView
                 android:id="@+id/addfragment_lbl_s4_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/NA"
                 android:gravity="center"
-                app:layout_constraintTop_toTopOf="@id/addfragment_lbl_s4"
+                android:text="@string/NA"
                 app:layout_constraintBottom_toBottomOf="@id/addfragment_lbl_s4"
+                app:layout_constraintLeft_toRightOf="@id/addfragment_lbl_s3"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/addfragment_lbl_s3"/>
+                app:layout_constraintTop_toTopOf="@id/addfragment_lbl_s4" />
 
             <TextView
                 android:id="@+id/addfragment_lbl_s5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/addfragment_lbl_s5"
                 android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/addfragment_lbl_s4"
+                android:text="@string/addfragment_lbl_s5"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/addfragment_lbl_s5_value"/>
+                app:layout_constraintRight_toLeftOf="@id/addfragment_lbl_s5_value"
+                app:layout_constraintTop_toBottomOf="@id/addfragment_lbl_s4" />
 
             <TextView
                 android:id="@+id/addfragment_lbl_s5_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/NA"
                 android:gravity="center"
-                app:layout_constraintTop_toTopOf="@id/addfragment_lbl_s5"
+                android:text="@string/NA"
                 app:layout_constraintBottom_toBottomOf="@id/addfragment_lbl_s5"
+                app:layout_constraintLeft_toRightOf="@id/addfragment_lbl_s5"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/addfragment_lbl_s5"/>
+                app:layout_constraintTop_toTopOf="@id/addfragment_lbl_s5" />
 
             <TextView
                 android:id="@+id/addfragment_lbl_s6"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/addfragment_lbl_s6"
                 android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/addfragment_lbl_s5"
+                android:text="@string/addfragment_lbl_s6"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/addfragment_lbl_s6_value"/>
+                app:layout_constraintRight_toLeftOf="@id/addfragment_lbl_s6_value"
+                app:layout_constraintTop_toBottomOf="@id/addfragment_lbl_s5" />
 
             <TextView
                 android:id="@+id/addfragment_lbl_s6_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/NA"
                 android:gravity="center"
-                app:layout_constraintTop_toTopOf="@id/addfragment_lbl_s6"
+                android:text="@string/NA"
                 app:layout_constraintBottom_toBottomOf="@id/addfragment_lbl_s6"
+                app:layout_constraintLeft_toRightOf="@id/addfragment_lbl_s3"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/addfragment_lbl_s3"/>
+                app:layout_constraintTop_toTopOf="@id/addfragment_lbl_s6" />
 
             <TextView
                 android:id="@+id/addfragment_lbl_s7"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/addfragment_lbl_s7"
                 android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/addfragment_lbl_s6"
+                android:text="@string/addfragment_lbl_s7"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/addfragment_lbl_s7_value"/>
+                app:layout_constraintRight_toLeftOf="@id/addfragment_lbl_s7_value"
+                app:layout_constraintTop_toBottomOf="@id/addfragment_lbl_s6" />
 
             <TextView
                 android:id="@+id/addfragment_lbl_s7_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/NA"
                 android:gravity="center"
-                app:layout_constraintTop_toTopOf="@id/addfragment_lbl_s7"
+                android:text="@string/NA"
                 app:layout_constraintBottom_toBottomOf="@id/addfragment_lbl_s7"
+                app:layout_constraintLeft_toRightOf="@id/addfragment_lbl_s7"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/addfragment_lbl_s7"/>
+                app:layout_constraintTop_toTopOf="@id/addfragment_lbl_s7" />
 
             <TextView
                 android:id="@+id/addfragment_lbl_s8"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/addfragment_lbl_s8"
                 android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/addfragment_lbl_s7"
+                android:text="@string/addfragment_lbl_s8"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/addfragment_lbl_s8_value"/>
+                app:layout_constraintRight_toLeftOf="@id/addfragment_lbl_s8_value"
+                app:layout_constraintTop_toBottomOf="@id/addfragment_lbl_s7" />
 
             <TextView
                 android:id="@+id/addfragment_lbl_s8_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/NA"
                 android:gravity="center"
-                app:layout_constraintTop_toTopOf="@id/addfragment_lbl_s8"
+                android:text="@string/NA"
                 app:layout_constraintBottom_toBottomOf="@id/addfragment_lbl_s8"
+                app:layout_constraintLeft_toRightOf="@id/addfragment_lbl_s3"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/addfragment_lbl_s3"/>
+                app:layout_constraintTop_toTopOf="@id/addfragment_lbl_s8" />
 
             <TextView
                 android:id="@+id/addfragment_lbl_s9"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/addfragment_lbl_s9"
                 android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/addfragment_lbl_s8"
+                android:text="@string/addfragment_lbl_s9"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/addfragment_lbl_s9_value"/>
+                app:layout_constraintRight_toLeftOf="@id/addfragment_lbl_s9_value"
+                app:layout_constraintTop_toBottomOf="@id/addfragment_lbl_s8" />
 
             <TextView
                 android:id="@+id/addfragment_lbl_s9_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/NA"
                 android:gravity="center"
-                app:layout_constraintTop_toTopOf="@id/addfragment_lbl_s9"
+                android:text="@string/NA"
                 app:layout_constraintBottom_toBottomOf="@id/addfragment_lbl_s9"
+                app:layout_constraintLeft_toRightOf="@id/addfragment_lbl_s9"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/addfragment_lbl_s9"/>
+                app:layout_constraintTop_toTopOf="@id/addfragment_lbl_s9" />
 
         </android.support.constraint.ConstraintLayout>
 
@@ -227,7 +227,7 @@
             android:text="@string/add_subtitle2"
             android:textColor="@color/subtitles"
             android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/add_subcontainer2"
@@ -253,9 +253,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="viewEnd"
-                app:layout_constraintTop_toTopOf="@id/lbl_addfragment1"
                 app:layout_constraintBottom_toBottomOf="@id/lbl_addfragment1"
-                app:layout_constraintRight_toRightOf="@id/addfragment_sp2" />
+                app:layout_constraintRight_toRightOf="@id/addfragment_sp2"
+                app:layout_constraintTop_toTopOf="@id/lbl_addfragment1" />
 
             <TextView
                 android:id="@+id/lbl_addfragment5"
@@ -271,10 +271,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="viewEnd"
-                app:layout_constraintTop_toTopOf="@id/lbl_addfragment5"
                 app:layout_constraintBottom_toBottomOf="@id/lbl_addfragment5"
                 app:layout_constraintLeft_toRightOf="@id/lbl_addfragment5"
-                app:layout_constraintRight_toLeftOf="@id/lbl_addfragment6"/>
+                app:layout_constraintRight_toLeftOf="@id/lbl_addfragment6"
+                app:layout_constraintTop_toTopOf="@id/lbl_addfragment5" />
 
             <TextView
                 android:id="@+id/lbl_addfragment6"
@@ -301,10 +301,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="viewEnd"
-                app:layout_constraintTop_toTopOf="@id/lbl_addfragment7"
                 app:layout_constraintBottom_toBottomOf="@id/lbl_addfragment7"
                 app:layout_constraintLeft_toRightOf="@id/lbl_addfragment7"
-                app:layout_constraintRight_toLeftOf="@id/lbl_addfragment8"/>
+                app:layout_constraintRight_toLeftOf="@id/lbl_addfragment8"
+                app:layout_constraintTop_toTopOf="@id/lbl_addfragment7" />
 
             <TextView
                 android:id="@+id/lbl_addfragment8"
@@ -313,9 +313,9 @@
                 android:layout_marginEnd="20dp"
                 android:gravity="center"
                 android:text="@string/lbl_addfragment_minutos"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toLeftOf="@id/lbl_addfragment6"
                 app:layout_constraintBottom_toBottomOf="@id/lbl_addfragment7"
+                app:layout_constraintLeft_toLeftOf="@id/lbl_addfragment6"
+                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="@id/lbl_addfragment7" />
 
             <TextView
@@ -333,10 +333,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="viewEnd"
-                app:layout_constraintTop_toTopOf="@id/lbl_addfragment9"
                 app:layout_constraintBottom_toBottomOf="@id/lbl_addfragment9"
                 app:layout_constraintLeft_toRightOf="@id/lbl_addfragment9"
-                app:layout_constraintRight_toLeftOf="@id/lbl_addfragment10"/>
+                app:layout_constraintRight_toLeftOf="@id/lbl_addfragment10"
+                app:layout_constraintTop_toTopOf="@id/lbl_addfragment9" />
 
             <TextView
                 android:id="@+id/lbl_addfragment10"
@@ -344,9 +344,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 android:text="@string/lbl_addfragment_minutos"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toLeftOf="@id/lbl_addfragment6"
                 app:layout_constraintBottom_toBottomOf="@id/lbl_addfragment9"
+                app:layout_constraintLeft_toLeftOf="@id/lbl_addfragment6"
+                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="@id/lbl_addfragment9" />
 
         </android.support.constraint.ConstraintLayout>
@@ -361,7 +361,7 @@
             android:text="@string/add_subtitle3"
             android:textColor="@color/subtitles"
             android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/add_subcontainer3"
@@ -375,20 +375,39 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:text="@string/lbl_addfragment2"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
                 android:id="@+id/etxt_equipment"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="20dp"
                 android:hint="@string/hint_equipment"
                 android:inputType="text"
-                android:layout_margin="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/lbl_addfragment2" />
+
+            <TextView
+                android:id="@+id/lbl_addfragment11"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="@string/lbl_addfragment11"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etxt_equipment" />
+
+            <EditText
+                android:id="@+id/etxt_modelo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:hint="@string/lbl_addfragment11_hint"
+                android:inputType="text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_addfragment11" />
 
             <TextView
                 android:id="@+id/lbl_addfragment3"
@@ -397,15 +416,15 @@
                 android:layout_margin="20dp"
                 android:text="@string/lbl_addfragment3"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etxt_equipment" />
+                app:layout_constraintTop_toBottomOf="@id/etxt_modelo" />
 
             <EditText
                 android:id="@+id/etxt_serial"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="20dp"
                 android:hint="@string/hint_serial"
                 android:inputType="text"
-                android:layout_margin="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/lbl_addfragment3" />
@@ -423,9 +442,9 @@
                 android:id="@+id/etxt_client"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="20dp"
                 android:hint="@string/hint_client"
                 android:inputType="text"
-                android:layout_margin="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/lbl_addfragment4" />
@@ -433,13 +452,31 @@
 
             <Button
                 android:id="@+id/btn_add"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/mainbutton"
                 android:text="@string/btn_start"
+                android:textColor="@color/subtitles"
+                android:textStyle="bold"
+                android:enabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/etxt_client" />
+
+            <Button
+                android:id="@+id/btn_cancelar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@drawable/cancel_button"
+                android:text="@string/btn_cancelar"
+                android:textColor="@color/subtitles"
+                android:textStyle="bold"
+                android:enabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_add" />
 
             <ProgressBar
                 android:id="@+id/progressBar"
@@ -451,7 +488,7 @@
                 android:minHeight="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_add" />
+                app:layout_constraintTop_toBottomOf="@+id/btn_cancelar" />
 
         </android.support.constraint.ConstraintLayout>
 

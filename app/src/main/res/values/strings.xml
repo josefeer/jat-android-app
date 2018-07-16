@@ -25,7 +25,8 @@
     <string name="hint_range">Range</string>
     <string name="hint_period">Period</string>
 
-    <string name="btn_start">START</string>
+    <string name="btn_start">Iniciar Ensayo</string>
+    <string name="btn_cancelar">Cancelar</string>
     <string name="DeviceList_title">Device List</string>
     <string name="system_status_title">Estado del Sistema</string>
     <string name="addfragment_lbl_s1">Sensor 1:</string>
@@ -65,7 +66,9 @@
     <string name="lbl_addfragment4">Nombre del Cliente:</string>
     <string name="lbl_addfragment5">Tiempo del Ensayo:</string>
     <string name="lbl_addfragment7">Tiempo de Estabilización:</string>
-    <string name="lbl_addfragment9">Capturar Temperatura cada:</string>
+    <string name="lbl_addfragment9">Capturar cada:</string>
+    <string name="lbl_addfragment11">Modelo del Equipo:</string>
+    <string name="lbl_addfragment11_hint">Ej. 619, Iso-Temp, Genérico, etc.</string>
     <string name="lbl_addfragment_minutos">Minutos</string>
 
     <string name="lbl_search">Search</string>
