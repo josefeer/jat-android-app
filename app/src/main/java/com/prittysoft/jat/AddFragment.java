@@ -31,7 +31,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-
 public class AddFragment extends Fragment {
 
     // widgets
@@ -40,9 +39,6 @@ public class AddFragment extends Fragment {
     TextView s1_value;
     ProgressBar progressBar;
     Spinner sp1, sp2, sp3, sp4;
-
-    // Database Class
-    DatabaseHelper mDatabaseHelper;
 
     // Intent
     Intent RegisterTempIntent;
@@ -58,6 +54,9 @@ public class AddFragment extends Fragment {
 
     // ArrayAdapters
     ArrayAdapter<CharSequence> SpinnerAdapter1, SpinnerAdapter2, SpinnerAdapter3, SpinnerAdapter4;
+
+    //Booleans
+    boolean BTstatus;
 
 
     public AddFragment() {
@@ -198,7 +197,7 @@ public class AddFragment extends Fragment {
             String client = etxt_client.getText().toString().trim();
 
             btn_add.setEnabled(!equipment.isEmpty() && !model.isEmpty() && !serial.isEmpty() &&
-            !client.isEmpty());
+            !client.isEmpty() && BTstatus);
         }
 
         @Override
@@ -211,17 +210,19 @@ public class AddFragment extends Fragment {
     private class mMessageReceiver extends BroadcastReceiver {
         JSONObject BTdata;
         List<String> sensor_values = new ArrayList<>();
+
         @Override
         public void onReceive(Context context, Intent intent){
-            //test = intent.getStringExtra("s1");
+            BTstatus = BTsocketHandler.getBluetoothStatus();
             Log.d("ADDFRAGMENT", "Receiver online");
+            /*
             BTdata = BTsocketHandler.getBTdata();
             try {
                 sensor_values = getSensor_values(BTdata);
                 s1_value.setText(sensor_values.get(0));
             }catch (JSONException e){
                 Log.d("AddFragment", "JSONExpetion");
-            }
+            }*/
         }
 
         private List<String> getSensor_values(JSONObject data) throws JSONException {

@@ -65,7 +65,7 @@
     <string name="lbl_addfragment3">Numero de Serie o Activo:</string>
     <string name="lbl_addfragment4">Nombre del Cliente:</string>
     <string name="lbl_addfragment5">Tiempo del Ensayo:</string>
-    <string name="lbl_addfragment7">Tiempo de Estabilización:</string>
+    <string name="lbl_addfragment7">Estabilización:</string>
     <string name="lbl_addfragment9">Capturar cada:</string>
     <string name="lbl_addfragment11">Modelo del Equipo:</string>
     <string name="lbl_addfragment11_hint">Ej. 619, Iso-Temp, Genérico, etc.</string>

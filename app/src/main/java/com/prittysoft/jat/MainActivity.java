@@ -15,9 +15,12 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     private MenuItem bluetooth_icon;
+    private Button main_button;
+
     private RecentsFragment fragment1 = new RecentsFragment();
     private AddFragment fragment2 = new AddFragment();
     private RegisterFragment fragment3 = new RegisterFragment();
@@ -74,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.base_frame, fragment1);
         fragmentTransaction.commit();
 
-
         IntentFilter filter = new IntentFilter("work");
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, filter);
     }
@@ -107,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
     protected BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
 
         String BTservice;
+
         @Override
         public void onReceive(Context context, Intent intent) {
             Log.d("MainActivity", "listening");
@@ -118,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
                 alertDialog.setTitle("Ops!");
                 alertDialog.setMessage("Device Desconnected");
                 alertDialog.show();
+
             }
             else{
                 bluetooth_icon.setIcon(R.drawable.toolbar_bluetooth_enabled);

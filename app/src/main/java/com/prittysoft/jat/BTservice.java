@@ -3,7 +3,6 @@ package com.prittysoft.jat;
 import android.app.IntentService;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
-import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
@@ -30,6 +29,8 @@ public class BTservice extends IntentService {
                 BTcomunication(BTsocket);
             }catch (IOException | JSONException e){
                 Log.d(TAG, "CLOSED");
+                Log.d(TAG, e.toString());
+                BTsocketHandler.setBluetoothStatus(false);
                 localintent.putExtra(TAG, "CLOSED");
                 LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(localintent);
             }
@@ -42,10 +43,11 @@ public class BTservice extends IntentService {
         String msg;
 
         while ((msg = input.readLine()) != null){
-            Log.d(TAG, "OK");
-
+            Log.d(TAG, "Bluetooth Buffer OK");
+            BTsocketHandler.setBluetoothStatus(true);
+            Log.d(TAG, msg);
             mainObject = new JSONObject(msg);
-            BTsocketHandler.setBTdata(mainObject);
+            //BTsocketHandler.setBTdata(mainObject);
             localintent.putExtra(TAG, "OK");
             LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(localintent);
         }

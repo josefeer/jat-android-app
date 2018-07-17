@@ -12,6 +12,7 @@ public class BTsocketHandler {
     private static BluetoothAdapter myBluetooth;
     private static BluetoothDevice dispositivo;
     private static JSONObject BTdata;
+    private static boolean BluetoothStatus = false;
 
     public static synchronized BluetoothSocket getBTsocket(){
         return BTsocket;
@@ -45,4 +46,11 @@ public class BTsocketHandler {
         BTsocketHandler.BTdata = BTdata;
     }
 
+    public static void setBluetoothStatus(boolean bluetoothStatus) {
+        BluetoothStatus = bluetoothStatus;
+    }
+
+    public static boolean getBluetoothStatus() {
+        return BluetoothStatus;
+    }
 }
