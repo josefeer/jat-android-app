@@ -15,9 +15,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -33,10 +35,14 @@ import java.util.Locale;
 
 public class AddFragment extends Fragment {
 
+    //layouts
+    GridLayout subcontainer1;
+
     // widgets
     EditText etxt_equipment, etxt_serial, etxt_client, etxt_model;
     Button btn_add;
-    TextView s1_value;
+    TextView s1_lbl, s1_value, s2_lbl, s2_value, s3_lbl, s3_value, s4_lbl, s4_value, s5_lbl,
+    s5_value, s6_lbl, s6_value, s7_lbl, s7_value, s8_lbl, s8_value, s9_lbl, s9_value;
     ProgressBar progressBar;
     Spinner sp1, sp2, sp3, sp4;
 
@@ -93,21 +99,7 @@ public class AddFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_add, container, false);
 
-        btn_add = v.findViewById(R.id.btn_add);
-
-        etxt_equipment = v.findViewById(R.id.etxt_equipment);
-        etxt_model = v.findViewById(R.id.etxt_modelo);
-        etxt_serial = v.findViewById(R.id.etxt_serial);
-        etxt_client = v.findViewById(R.id.etxt_client);
-
-        s1_value = v.findViewById(R.id.addfragment_lbl_s1_value);
-
-        progressBar = v.findViewById(R.id.progressBar);
-
-        sp1 = v.findViewById(R.id.addfragment_sp1);
-        sp2 = v.findViewById(R.id.addfragment_sp2);
-        sp3 = v.findViewById(R.id.addfragment_sp3);
-        sp4 = v.findViewById(R.id.addfragment_sp4);
+        setAllViewById(v);
 
         SpinnerAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         SpinnerAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -129,6 +121,29 @@ public class AddFragment extends Fragment {
             public void onClick(View v) {
                 btn_addAction();
             }
+        });
+
+        sp1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 0:
+                        isIsotermo1();
+                        break;
+                    case 1:
+                        isIsotermo2();
+                        break;
+                    case 2:
+                        isCalibracionPatron();
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+
         });
 
         return v;
@@ -181,6 +196,102 @@ public class AddFragment extends Fragment {
 
         getContext().startService(RegisterTempIntent);
         LocalBroadcastManager.getInstance(getContext()).registerReceiver(RegisterTempReceiver, filter2);
+    }
+
+    private void setAllViewById(View v){
+        btn_add = v.findViewById(R.id.btn_add);
+
+        subcontainer1 = v.findViewById(R.id.subcontainer1);
+
+        etxt_equipment = v.findViewById(R.id.etxt_equipment);
+        etxt_model = v.findViewById(R.id.etxt_modelo);
+        etxt_serial = v.findViewById(R.id.etxt_serial);
+        etxt_client = v.findViewById(R.id.etxt_client);
+
+        s1_lbl = v.findViewById(R.id.addfragment_lbl_s1);
+        s1_value = v.findViewById(R.id.addfragment_lbl_s1_value);
+        s2_lbl = v.findViewById(R.id.addfragment_lbl_s2);
+        s2_value = v.findViewById(R.id.addfragment_lbl_s2_value);
+        s3_lbl = v.findViewById(R.id.addfragment_lbl_s3);
+        s3_value = v.findViewById(R.id.addfragment_lbl_s3_value);
+        s4_lbl = v.findViewById(R.id.addfragment_lbl_s4);
+        s4_value = v.findViewById(R.id.addfragment_lbl_s4_value);
+        s5_lbl = v.findViewById(R.id.addfragment_lbl_s5);
+        s5_value = v.findViewById(R.id.addfragment_lbl_s5_value);
+        s6_lbl = v.findViewById(R.id.addfragment_lbl_s6);
+        s6_value = v.findViewById(R.id.addfragment_lbl_s6_value);
+        s7_lbl = v.findViewById(R.id.addfragment_lbl_s7);
+        s7_value = v.findViewById(R.id.addfragment_lbl_s7_value);
+        s8_lbl = v.findViewById(R.id.addfragment_lbl_s8);
+        s8_value = v.findViewById(R.id.addfragment_lbl_s8_value);
+        s9_lbl = v.findViewById(R.id.addfragment_lbl_s9);
+        s9_value = v.findViewById(R.id.addfragment_lbl_s9_value);
+
+        progressBar = v.findViewById(R.id.progressBar);
+
+        sp1 = v.findViewById(R.id.addfragment_sp1);
+        sp2 = v.findViewById(R.id.addfragment_sp2);
+        sp3 = v.findViewById(R.id.addfragment_sp3);
+        sp4 = v.findViewById(R.id.addfragment_sp4);
+    }
+
+    private void isIsotermo1(){
+        s2_lbl.setVisibility(View.VISIBLE);
+        s2_value.setVisibility(View.VISIBLE);
+        s3_lbl.setVisibility(View.VISIBLE);
+        s3_value.setVisibility(View.VISIBLE);
+        s4_lbl.setVisibility(View.VISIBLE);
+        s4_value.setVisibility(View.VISIBLE);
+        s5_lbl.setVisibility(View.VISIBLE);
+        s5_value.setVisibility(View.VISIBLE);
+        s6_lbl.setVisibility(View.VISIBLE);
+        s6_value.setVisibility(View.VISIBLE);
+        s7_lbl.setVisibility(View.VISIBLE);
+        s7_value.setVisibility(View.VISIBLE);
+        s8_lbl.setVisibility(View.VISIBLE);
+        s8_value.setVisibility(View.VISIBLE);
+        s9_lbl.setVisibility(View.VISIBLE);
+        s9_value.setVisibility(View.VISIBLE);
+
+    }
+
+    private void isIsotermo2(){
+        s2_lbl.setVisibility(View.VISIBLE);
+        s2_value.setVisibility(View.VISIBLE);
+        s3_lbl.setVisibility(View.VISIBLE);
+        s3_value.setVisibility(View.VISIBLE);
+        s4_lbl.setVisibility(View.VISIBLE);
+        s4_value.setVisibility(View.VISIBLE);
+        s5_lbl.setVisibility(View.GONE);
+        s5_value.setVisibility(View.GONE);
+        s6_lbl.setVisibility(View.GONE);
+        s6_value.setVisibility(View.GONE);
+        s7_lbl.setVisibility(View.GONE);
+        s7_value.setVisibility(View.GONE);
+        s8_lbl.setVisibility(View.GONE);
+        s8_value.setVisibility(View.GONE);
+        s9_lbl.setVisibility(View.GONE);
+        s9_value.setVisibility(View.GONE);
+
+    }
+
+    private void isCalibracionPatron(){
+        s2_lbl.setVisibility(View.GONE);
+        s2_value.setVisibility(View.GONE);
+        s3_lbl.setVisibility(View.GONE);
+        s3_value.setVisibility(View.GONE);
+        s4_lbl.setVisibility(View.GONE);
+        s4_value.setVisibility(View.GONE);
+        s5_lbl.setVisibility(View.GONE);
+        s5_value.setVisibility(View.GONE);
+        s6_lbl.setVisibility(View.GONE);
+        s6_value.setVisibility(View.GONE);
+        s7_lbl.setVisibility(View.GONE);
+        s7_value.setVisibility(View.GONE);
+        s8_lbl.setVisibility(View.GONE);
+        s8_value.setVisibility(View.GONE);
+        s9_lbl.setVisibility(View.GONE);
+        s9_value.setVisibility(View.GONE);
     }
 
     private TextWatcher verify_data = new TextWatcher() {
