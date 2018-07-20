@@ -35,12 +35,17 @@ import java.util.Locale;
 
 public class AddFragment extends Fragment {
 
+    private static final String TAG = "Addfragment";
+
+    //context
+    Context context;
+
     //layouts
     GridLayout subcontainer1;
 
     // widgets
     EditText etxt_equipment, etxt_serial, etxt_client, etxt_model;
-    Button btn_add;
+    Button btn_add, btn_cancel;
     TextView s1_lbl, s1_value, s2_lbl, s2_value, s3_lbl, s3_value, s4_lbl, s4_value, s5_lbl,
     s5_value, s6_lbl, s6_value, s7_lbl, s7_value, s8_lbl, s8_value, s9_lbl, s9_value;
     ProgressBar progressBar;
@@ -49,14 +54,17 @@ public class AddFragment extends Fragment {
     // Intent
     Intent RegisterTempIntent;
 
+    //IntentFilter
+    IntentFilter filter2;
+
     // Receivers
-    BroadcastReceiver mMessageReceiver = new mMessageReceiver();
+    BroadcastReceiver BTserviceReceiver2 = new BTserviceReceiver2();
     BroadcastReceiver RegisterTempReceiver = new RegisterTempReceiver();
 
     // DateFormat for timestamp
     SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
     SimpleDateFormat hour_format = new SimpleDateFormat("k:mm:ss", Locale.US);
-    SimpleDateFormat timezone = new SimpleDateFormat("z", Locale.US);
+ //   SimpleDateFormat timezone = new SimpleDateFormat("z", Locale.US);
 
     // ArrayAdapters
     ArrayAdapter<CharSequence> SpinnerAdapter1, SpinnerAdapter2, SpinnerAdapter3, SpinnerAdapter4;
@@ -69,7 +77,6 @@ public class AddFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -78,6 +85,8 @@ public class AddFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+
+        this.context = context;
 
         SpinnerAdapter1 = ArrayAdapter.createFromResource(context,
                 R.array.valorestiposensayos, android.R.layout.simple_spinner_item);
@@ -116,10 +125,20 @@ public class AddFragment extends Fragment {
         etxt_serial.addTextChangedListener(verify_data);
         etxt_client.addTextChangedListener(verify_data);
 
+        RegisterTempIntent = new Intent(this.context, RegisterTempService.class);
+        filter2 = new IntentFilter("RegisterTemp");
+
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 btn_addAction();
+            }
+        });
+
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btn_cancelAction();
             }
         });
 
@@ -153,53 +172,103 @@ public class AddFragment extends Fragment {
     public void onResume() {
         super.onResume();
         IntentFilter filter = new IntentFilter("work");
-        LocalBroadcastManager.getInstance(getContext()).registerReceiver(mMessageReceiver, filter);
+        LocalBroadcastManager.getInstance(this.context).registerReceiver(BTserviceReceiver2, filter);
     }
 
     @Override
     public void onPause() {
-        LocalBroadcastManager.getInstance(getContext()).unregisterReceiver(mMessageReceiver);
+        LocalBroadcastManager.getInstance(this.context).unregisterReceiver(BTserviceReceiver2);
         super.onPause();
     }
 
     @Override
     public void onDestroy() {
-        LocalBroadcastManager.getInstance(getContext()).unregisterReceiver(mMessageReceiver);
-        LocalBroadcastManager.getInstance(getContext()).unregisterReceiver(RegisterTempReceiver);
+        LocalBroadcastManager.getInstance(this.context).unregisterReceiver(BTserviceReceiver2);
+        LocalBroadcastManager.getInstance(this.context).unregisterReceiver(RegisterTempReceiver);
         super.onDestroy();
     }
 
     private void btn_addAction() {
-        IntentFilter filter2 = new IntentFilter("RegisterTemp");
+
+        // Date() captura la fecha y hora del momento
         Date start_timestamp = new Date();
 
-        String value_range = sp2.getSelectedItem().toString();
-        String value_period = sp3.getSelectedItem().toString();
-        String value_date = date_format.format(start_timestamp);
-        String value_equipment = etxt_equipment.getText().toString();
-        String value_serial = etxt_serial.getText().toString();
-        String value_client = etxt_client.getText().toString();
-        String value_datetime = hour_format.format(start_timestamp);
-        String value_type = sp1.getSelectedItem().toString();
+        // Valores del sistema
+        String fecha = date_format.format(start_timestamp);
+        String hora = hour_format.format(start_timestamp);
 
-        RegisterTempIntent = new Intent(getContext(), RegisterTempService.class);
-        RegisterTempIntent.putExtra("value_range", value_range);
-        RegisterTempIntent.putExtra("value_period", value_period);
-        RegisterTempIntent.putExtra("value_date", value_date);
-        RegisterTempIntent.putExtra("value_equipment", value_equipment);
-        RegisterTempIntent.putExtra("value_serial", value_serial);
-        RegisterTempIntent.putExtra("value_client", value_client);
-        RegisterTempIntent.putExtra("value_datetime", value_datetime);
-        RegisterTempIntent.putExtra("value_type", value_type);
+        // Valores de los spinners
+        String tipo_ensayo = sp1.getSelectedItem().toString();
+        String tiempo_ensayo = sp2.getSelectedItem().toString();
+        String tiempo_estabilizacion = sp3.getSelectedItem().toString();
+        String tiempo_captura = sp4.getSelectedItem().toString();
+        Integer tipo_ensayo_posicion = sp1.getSelectedItemPosition();
+
+        // Valores de los editext
+        String equipo_nombre = etxt_equipment.getText().toString();
+        String equipo_modelo = etxt_model.getText().toString();
+        String equipo_serial = etxt_serial.getText().toString();
+        String equipo_cliente = etxt_client.getText().toString();
+
+
+        // Valores que son enviados al servicio RegisterTempService
+        RegisterTempIntent.putExtra("fecha", fecha);
+        RegisterTempIntent.putExtra("hora", hora);
+        RegisterTempIntent.putExtra("tipo_ensayo", tipo_ensayo);
+        RegisterTempIntent.putExtra("tiempo_ensayo", tiempo_ensayo);
+        RegisterTempIntent.putExtra("tiempo_estabilizacion", tiempo_estabilizacion);
+        RegisterTempIntent.putExtra("tiempo_captura", tiempo_captura);
+        RegisterTempIntent.putExtra("equipo_nombre", equipo_nombre);
+        RegisterTempIntent.putExtra("equipo_modelo", equipo_modelo);
+        RegisterTempIntent.putExtra("equipo_serial", equipo_serial);
+        RegisterTempIntent.putExtra("equipo_cliente", equipo_cliente);
+        RegisterTempIntent.putExtra("tipo_ensayo_posicion", tipo_ensayo_posicion.toString());
 
         btn_add.setEnabled(false);
+        btn_cancel.setEnabled(true);
 
-        getContext().startService(RegisterTempIntent);
-        LocalBroadcastManager.getInstance(getContext()).registerReceiver(RegisterTempReceiver, filter2);
+        sp1.setEnabled(false);
+        sp2.setEnabled(false);
+        sp3.setEnabled(false);
+        sp4.setEnabled(false);
+
+        etxt_equipment.setEnabled(false);
+        etxt_model.setEnabled(false);
+        etxt_serial.setEnabled(false);
+        etxt_client.setEnabled(false);
+
+        // Iniciamos el servicio de la clase RegisterTempService
+        this.context.startService(RegisterTempIntent);
+
+        // Iniciamos un broadcastmanager para recibir data de RegisterTempService
+        LocalBroadcastManager.getInstance(this.context).registerReceiver(RegisterTempReceiver, filter2);
+    }
+
+    private void btn_cancelAction(){
+        this.context.stopService(RegisterTempIntent);
+        LocalBroadcastManager.getInstance(this.context).unregisterReceiver(RegisterTempReceiver);
+
+
+        sp1.setEnabled(true);
+        sp2.setEnabled(true);
+        sp3.setEnabled(true);
+        sp4.setEnabled(true);
+
+        etxt_equipment.setEnabled(true);
+        etxt_model.setEnabled(true);
+        etxt_serial.setEnabled(true);
+        etxt_client.setEnabled(true);
+
+        btn_cancel.setEnabled(false);
+        btn_add.setEnabled(true);
+
+        progressBar.setProgress(0);
+
     }
 
     private void setAllViewById(View v){
         btn_add = v.findViewById(R.id.btn_add);
+        btn_cancel = v.findViewById(R.id.btn_cancelar);
 
         subcontainer1 = v.findViewById(R.id.subcontainer1);
 
@@ -318,44 +387,83 @@ public class AddFragment extends Fragment {
     };
 
     //BrodcastReceiver from BTservice
-    private class mMessageReceiver extends BroadcastReceiver {
+    private class BTserviceReceiver2 extends BroadcastReceiver {
         JSONObject BTdata;
         List<String> sensor_values = new ArrayList<>();
 
         @Override
         public void onReceive(Context context, Intent intent){
-            BTstatus = BTsocketHandler.getBluetoothStatus();
-            Log.d("ADDFRAGMENT", "Receiver online");
-            /*
-            BTdata = BTsocketHandler.getBTdata();
+            Log.d(TAG, "Listening to BTservice");
             try {
+                BTstatus = BTsocketHandler.getBluetoothStatus();
+                BTdata = BTsocketHandler.getBTdata();
                 sensor_values = getSensor_values(BTdata);
+
                 s1_value.setText(sensor_values.get(0));
+                s2_value.setText(sensor_values.get(1));
+                s3_value.setText(sensor_values.get(2));
+                s4_value.setText(sensor_values.get(3));
+                s5_value.setText(sensor_values.get(4));
+                s6_value.setText(sensor_values.get(5));
+                s7_value.setText(sensor_values.get(6));
+                s8_value.setText(sensor_values.get(7));
+                s9_value.setText(sensor_values.get(8));
+
             }catch (JSONException e){
                 Log.d("AddFragment", "JSONExpetion");
-            }*/
+            }
         }
 
         private List<String> getSensor_values(JSONObject data) throws JSONException {
             List<String> values = new ArrayList<>();
+
             values.add(data.getString("S1"));
+            values.add(data.getString("S2"));
+            values.add(data.getString("S3"));
+            values.add(data.getString("S4"));
+            values.add(data.getString("S5"));
+            values.add(data.getString("S6"));
+            values.add(data.getString("S7"));
+            values.add(data.getString("S8"));
+            values.add(data.getString("S9"));
+
             return values;
         }
     }
 
     //BroadcastReceiver from RegisterTempService
     private class RegisterTempReceiver extends BroadcastReceiver {
-        String receiver0;
-        Integer value_progressbar;
+        String receiver;
+        Integer progressbar_current_value;
+
         @Override
         public void onReceive(Context context, Intent intent) {
-            receiver0 = intent.getStringExtra("value_progressbar");
-            if (receiver0 != null){
-                value_progressbar = Integer.parseInt(receiver0);
-                progressBar.setProgress(Integer.parseInt(receiver0));
+            Log.d(TAG, "Listening to RegisterTempService");
+            if (!(receiver = intent.getStringExtra("progressbar_percentage")).isEmpty()){
+                progressbar_current_value = Integer.parseInt(receiver);
+                progressBar.setProgress(progressbar_current_value);
+                Log.d(TAG, "Progressbar value:"+progressbar_current_value.toString());
 
-                if (receiver0.equals("100")){
+                if (progressbar_current_value >= 100){
                     btn_add.setEnabled(true);
+                    btn_cancel.setEnabled(false);
+
+                    etxt_equipment.getText().clear();
+                    etxt_model.getText().clear();
+                    etxt_serial.getText().clear();
+                    etxt_client.getText().clear();
+
+                    sp1.setEnabled(true);
+                    sp2.setEnabled(true);
+                    sp3.setEnabled(true);
+                    sp4.setEnabled(true);
+
+                    etxt_equipment.setEnabled(true);
+                    etxt_model.setEnabled(true);
+                    etxt_serial.setEnabled(true);
+                    etxt_client.setEnabled(true);
+
+                    progressBar.setProgress(0);
 
                 }
 

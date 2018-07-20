@@ -16,106 +16,186 @@ import java.util.Locale;
 
 
 public class RegisterTempService extends IntentService {
+
+    private static boolean ServiceStatus;
     private static final String TAG = "RegisterTempService";
-    private static Intent localintent = new Intent("RegisterTemp");
     private static final Integer minute = 1000 * 60;
+    private static Intent localintent = new Intent("RegisterTemp");
     SimpleDateFormat hour_format = new SimpleDateFormat("k:mm:ss", Locale.US);
+
     SimpleDateFormat timezone = new SimpleDateFormat("z", Locale.US);
 
-    //class helper
+    // Class helper
     DatabaseHelper mDatabaseHelper;
+
+    // Variables
+    String fecha, hora, tipo_ensayo, tiempo_ensayo, tiempo_estabilizacion, tiempo_captura,
+            equipo_nombre, equipo_modelo, equipo_serial, equipo_cliente;
+
+    String tipo_ensayo_posicion;
 
     public RegisterTempService() {
         super("RegisterTempService");
     }
 
     @Override
-    protected void onHandleIntent(@Nullable Intent intent) {
-        Log.d(TAG, "Service Started!");
-
-        if (intent != null){
-            try {
-                Data2DB(intent);
-            }catch (JSONException e){
-                Log.d(TAG, "JSONException");
-            }
-        }
-
-        Log.d(TAG, "Out of Service");
+    public void onDestroy() {
+        super.onDestroy();
+        ServiceStatus = false;
+        Log.d(TAG, "Asked Service to be Stopped");
     }
 
-    private void Data2DB(Intent intent) throws JSONException {
+
+    @Override
+    protected void onHandleIntent(@Nullable Intent intent) {
+        Log.d(TAG, "Service Started!");
+        ServiceStatus = true;
+
+        try {
+            if (intent != null) {
+                getValuesFromAddfragment(intent);
+                Data2DB();
+            }
+
+        } catch (JSONException e) {
+            Log.d(TAG, "JSONException" + e.toString());
+        }
+
+    }
+
+    private void getValuesFromAddfragment(Intent intent) {
+        fecha = intent.getStringExtra("fecha");
+        hora = intent.getStringExtra("hora");
+        tipo_ensayo = intent.getStringExtra("tipo_ensayo");
+        tiempo_ensayo = intent.getStringExtra("tiempo_ensayo");
+        tiempo_estabilizacion = intent.getStringExtra("tiempo_estabilizacion");
+        tiempo_captura = intent.getStringExtra("tiempo_captura");
+        equipo_nombre = intent.getStringExtra("equipo_nombre");
+        equipo_modelo = intent.getStringExtra("equipo_modelo");
+        equipo_serial = intent.getStringExtra("equipo_serial");
+        equipo_cliente = intent.getStringExtra("equipo_cliente");
+        tipo_ensayo_posicion = intent.getStringExtra("tipo_ensayo_posicion");
+    }
+
+    private void Data2DB() throws JSONException {
+
         mDatabaseHelper = new DatabaseHelper(getApplicationContext());
 
-        String value_date = intent.getStringExtra("value_date");
-        String value_datetime = intent.getStringExtra("value_datetime");
-        String value_endtime = null;
-        String value_equipment = intent.getStringExtra("value_equipment");
-        String value_serial = intent.getStringExtra("value_serial");
-        String value_client = intent.getStringExtra("value_client");
-        Integer value_range = Integer.parseInt(intent.getStringExtra("value_range"));
-        String value_range_units = null;
-        Integer value_period = Integer.parseInt(intent.getStringExtra("value_period"));
-        String value_period_units = null;
-        String value_type = intent.getStringExtra("value_type");
-
-        String S1, value_progressbar;
-        JSONObject mainObject;
-        Integer seq_value = 0;
-        Date timestamp;
+        Integer t_estabilizacion = Integer.parseInt(tiempo_estabilizacion);
+        Integer t_ensayo_posicion = Integer.parseInt(tipo_ensayo_posicion);
+        Integer current_id;
 
         //Database Insertion for measurements table
-        String[] values_table1 = {value_type,value_date, value_datetime, null, value_equipment, value_serial,
-        value_client, Integer.toString(value_range), value_range_units, Integer.toString(value_period),
-        value_period_units};
+        String[] Table1Values = {
+                fecha,
+                hora,
+                null,
+                tipo_ensayo,
+                tiempo_ensayo,
+                tiempo_estabilizacion,
+                tiempo_captura,
+                equipo_nombre,
+                equipo_modelo,
+                equipo_serial,
+                equipo_cliente
+        };
 
-        if (mDatabaseHelper.addDataTable1(values_table1)){
+
+        if (mDatabaseHelper.addDataTable1(Table1Values)) {
+
             Log.d(TAG, "Succesfull Primary insert");
+            current_id = mDatabaseHelper.getAutoIncrementMeasurements();
 
-            for (int current_time = 1; current_time <= value_range; current_time += value_period) {
-                SystemClock.sleep(minute);
-                //Database Insertion for sensordata table
-                mainObject = BTsocketHandler.getBTdata();
-                S1 = mainObject.getString("S1");
+            // Pausamos el proceso por el tiempo de estabilizacion si es diferente de 0
+            if (!tiempo_estabilizacion.equals("0")) {
+                Log.d(TAG, "Tiempo de estabilizacion es: " + tiempo_estabilizacion);
+                SystemClock.sleep(t_estabilizacion);
+            }
 
-                Log.d(TAG, "value from arduino: " + S1);
+            // Verificamos que no se ha cancelado el servicio
+            if (!ServiceStatus) {
+                stopSelf();
+                Log.d(TAG, "Service Interrupted");
+                return;
+            }
 
-                seq_value = mDatabaseHelper.getAutoIncrementMeasurements();
+            switch (t_ensayo_posicion) {
+                case 0:
+                    break;
+                case 1:
+                    InsertIsotermos2(current_id);
+                    break;
+                case 2:
+                    break;
+            }
 
-                timestamp = new Date();
-                String date_time = hour_format.format(timestamp);
-
-                String[] values_table2 = {Integer.toString(seq_value), date_time, S1};
-
-                if (mDatabaseHelper.addDataTableSensorCalibration(values_table2)){
-                    Log.d(TAG, "Succesfull Secondary Insert");
-                }
-                else {
-                    Log.d(TAG, "Unsuccesfull secondary insert");
-                }
+            Log.d(TAG, "Service Finished");
+        } else {
+            Log.d(TAG, "Unsuccesfull DB INSERT");
+        }
 
 
-            /*Progress Bar send back to main UI*/
-                Integer progressbar_percentage = (current_time * 100) / value_range;
-                value_progressbar = Integer.toString(progressbar_percentage);
+    }
 
-                localintent.putExtra("value_progressbar", value_progressbar);
+    private void InsertIsotermos2(Integer queryID) throws JSONException {
+        String current_timestamp;
+
+        Integer t_ensayo = Integer.parseInt(tiempo_ensayo);
+        Integer t_captura = Integer.parseInt(tiempo_captura);
+        Integer progressbar_percentage, current_time = 1;
+
+        JSONObject JSONValues;
+
+        String S1, S2, S3, S4;
+
+        for (current_time = 1; current_time <= t_ensayo; current_time += t_captura) {
+
+            SystemClock.sleep(minute * t_captura);
+
+            // Verificamos que no se ha cancelado el servicio
+            if (!ServiceStatus) {
+                stopSelf();
+                Log.d(TAG, "Service Interrupted");
+                return;
+            }
+
+            current_timestamp = hour_format.format(new Date());
+
+            JSONValues = BTsocketHandler.getBTdata();
+            S1 = JSONValues.getString("S1");
+            S2 = JSONValues.getString("S2");
+            S3 = JSONValues.getString("S3");
+            S4 = JSONValues.getString("S4");
+
+            String[] table2_values = {
+                    queryID.toString(),
+                    current_timestamp,
+                    S1,
+                    S2,
+                    S3,
+                    S4
+            };
+
+            mDatabaseHelper.addDataTable2(table2_values);
+
+            // Verificamos que no se ha cancelado el servicio
+            if (!ServiceStatus) {
+                stopSelf();
+                Log.d(TAG, "Service Interrupted");
+                return;
+            }else {
+                progressbar_percentage = (current_time * 100) / t_ensayo;
+
+                // Enviamos información del proceso al progressbar del Addfragment
+                localintent.putExtra("progressbar_percentage", progressbar_percentage.toString());
                 LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(localintent);
-                Log.d(TAG, "progressbar: " + value_progressbar);
             }
 
-            if (seq_value != 0){
-                timestamp = new Date();
-                value_endtime = hour_format.format(timestamp);
-                mDatabaseHelper.updateEndTimeTable1(seq_value, value_endtime);
-                Log.d(TAG, "Succesfull Update in main table");
-            }
 
         }
-        else {
-            Log.d(TAG, "Unsuccesfull primary insert");
-        }
 
+        // Actualizamos el valor endtime de la tabla1
+        mDatabaseHelper.updateEndTimeTable1(queryID, hour_format.format(new Date()));
 
     }
 

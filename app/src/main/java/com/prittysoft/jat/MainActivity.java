@@ -1,5 +1,6 @@
 package com.prittysoft.jat;
 
+import android.bluetooth.BluetoothSocket;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -17,9 +18,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
     private MenuItem bluetooth_icon;
-    private Button main_button;
 
     private RecentsFragment fragment1 = new RecentsFragment();
     private AddFragment fragment2 = new AddFragment();
@@ -78,13 +81,13 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
 
         IntentFilter filter = new IntentFilter("work");
-        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, filter);
+        LocalBroadcastManager.getInstance(this).registerReceiver(BTserviceReceiver, filter);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(BTserviceReceiver);
     }
 
     @Override
@@ -106,16 +109,21 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    protected BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+    protected BroadcastReceiver BTserviceReceiver = new BroadcastReceiver() {
 
         String BTservice;
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            Log.d("MainActivity", "listening");
+            Log.d(TAG, "Listening to BTservice");
             BTservice = intent.getStringExtra("BTservice");
-            Log.d("intent", BTservice);
             if (BTservice.equals("CLOSED") || BTservice == null){
+                try {
+                    BluetoothSocket socket = BTsocketHandler.getBTsocket();
+                    socket.close();
+                }catch (IOException e){
+                    Log.d(TAG, e.toString());
+                }
                 bluetooth_icon.setIcon(R.drawable.toolbar_bluetooth_disabled);
                 AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
                 alertDialog.setTitle("Ops!");

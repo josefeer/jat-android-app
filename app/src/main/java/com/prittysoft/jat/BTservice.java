@@ -24,30 +24,34 @@ public class BTservice extends IntentService {
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
+        Log.d(TAG, "Service Started!");
+
         BluetoothSocket BTsocket = BTsocketHandler.getBTsocket();
-            try{
-                BTcomunication(BTsocket);
-            }catch (IOException | JSONException e){
-                Log.d(TAG, "CLOSED");
-                Log.d(TAG, e.toString());
-                BTsocketHandler.setBluetoothStatus(false);
-                localintent.putExtra(TAG, "CLOSED");
-                LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(localintent);
-            }
+
+        try{
+            BTsocketHandler.setBluetoothStatus(true);
+            BTcomunication(BTsocket);
+        }catch (IOException | JSONException e){
+            Log.d(TAG, e.toString());
+            localintent.putExtra(TAG, "CLOSED");
+            LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(localintent);
+        }
+
+        BTsocketHandler.setBluetoothStatus(false);
+        Log.d(TAG, "Service Ended!");
     }
 
     private void BTcomunication(BluetoothSocket BTSocket) throws IOException, JSONException {
         JSONObject mainObject;
         BufferedReader input;
-        input = new BufferedReader(new InputStreamReader(BTSocket.getInputStream()));
         String msg;
+        input = new BufferedReader(new InputStreamReader(BTSocket.getInputStream()));
 
         while ((msg = input.readLine()) != null){
-            Log.d(TAG, "Bluetooth Buffer OK");
-            BTsocketHandler.setBluetoothStatus(true);
+            msg = msg.replace("-127.00", "N/A");
             Log.d(TAG, msg);
             mainObject = new JSONObject(msg);
-            //BTsocketHandler.setBTdata(mainObject);
+            BTsocketHandler.setBTdata(mainObject);
             localintent.putExtra(TAG, "OK");
             LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(localintent);
         }
