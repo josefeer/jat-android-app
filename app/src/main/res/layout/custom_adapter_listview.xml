@@ -1,39 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/lbl_adapter_id"
+        android:layout_width="50dp"
+        android:layout_height="80dp"
+        android:text="@string/lbl_adapter_id"
+        android:textColor="@color/listadapter1_text"
+        android:layout_alignParentStart="true"
+        android:fadingEdge="vertical"
+        android:textStyle="bold"
         android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_weight="66.6"
+        />
+
+    <TextView
+        android:id="@+id/recent_adapter_id"
+        android:layout_width="50dp"
+        android:layout_height="80dp"
+        android:layout_toEndOf="@id/lbl_adapter_id"
+        android:gravity="center"
         android:text="@string/NA" />
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/lbl_adapter_equipment"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_toEndOf="@id/recent_adapter_id"
+        android:textColor="@color/listadapter1_text"
+        android:fadingEdge="vertical"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="@string/lbl_adapter_datos" />
+
+    <TextView
+        android:id="@+id/recent_adapter_equipment"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_weight="33.3"
-        android:orientation="vertical">
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@id/lbl_adapter_equipment"
+        android:layout_alignParentEnd="true"
+        android:text="@string/NA" />
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:text="@string/NA" />
+    <TextView
+        android:id="@+id/recent_adapter_model"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_below="@id/recent_adapter_equipment"
+        android:layout_toEndOf="@id/lbl_adapter_equipment"
+        android:layout_alignParentEnd="true"
+        android:text="@string/NA" />
 
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:text="@string/NA" />
+    <TextView
+        android:id="@+id/recent_adapter_serial"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_below="@id/recent_adapter_model"
+        android:layout_toEndOf="@id/lbl_adapter_equipment"
+        android:layout_alignParentEnd="true"
+        android:text="@string/NA" />
 
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:text="@string/NA" />
-    </LinearLayout>
-</LinearLayout>
+    <TextView
+        android:id="@+id/recent_adapter_client"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_below="@id/recent_adapter_serial"
+        android:layout_toEndOf="@id/lbl_adapter_equipment"
+        android:layout_alignParentEnd="true"
+        android:text="@string/NA" />
+
+</RelativeLayout>
+

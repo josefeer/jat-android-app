@@ -15,9 +15,13 @@ public class DetailActivity extends AppCompatActivity {
 
 
     private static final String TAG = "DetailActivity";
-    TextView detail_txt_id, detail_txt_start, detail_txt_date, detail_txt_end, detail_txt_equipment,
-    detail_txt_client, detail_txt_serial, detail_txt_range, detail_txt_period, detail_txt_type;
-    ListView datalist1;
+
+    private TextView activity_detail_date, activity_detail_starttime, activity_detail_endtime,
+    activitiy_detail_title, activity_detail_status, activity_detail_tipo, activity_detail_tensayo,
+    activity_detail_testabilizacion, activity_detail_tcaptura, activity_detail_client,
+    activity_detail_equipment, activity_detail_equipment_model, activity_detail_equipment_serial;
+
+    private ListView datalist1;
 
     DatabaseHelper LocalSQlite;
 
@@ -26,46 +30,37 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        /*
         detail_txt_id = findViewById(R.id.detail_txt_id);
-        detail_txt_start = findViewById(R.id.detail_txt_starttime);
-        detail_txt_date = findViewById(R.id.detail_txt_date);
-        detail_txt_end = findViewById(R.id.detail_txt_endtime);
         detail_txt_equipment = findViewById(R.id.detail_txt_equipment);
         detail_txt_client = findViewById(R.id.detail_txt_client);
         detail_txt_serial = findViewById(R.id.detail_txt_serial);
         detail_txt_range = findViewById(R.id.detail_txt_range);
         detail_txt_period = findViewById(R.id.detail_txt_period);
         detail_txt_type = findViewById(R.id.detail_txt_type);
-        datalist1 = findViewById(R.id.data_list1);
+        datalist1 = findViewById(R.id.data_list1);*/
+
+        activitiy_detail_title = findViewById(R.id.activity_detail_title);
+        activity_detail_status = findViewById(R.id.activity_detail_status);
+        activity_detail_date = findViewById(R.id.activity_detail_date);
+        activity_detail_starttime = findViewById(R.id.activity_detail_starttime);
+        activity_detail_endtime = findViewById(R.id.activity_detail_endtime);
+        activity_detail_tipo = findViewById(R.id.activity_detail_tipo);
+        activity_detail_tensayo = findViewById(R.id.activity_detail_tensayo);
+        activity_detail_testabilizacion = findViewById(R.id.activity_detail_testabilizacion);
+        activity_detail_tcaptura = findViewById(R.id.activity_detail_tcaptura);
+        activity_detail_client = findViewById(R.id.activity_detail_client);
+        activity_detail_equipment = findViewById(R.id.activity_detail_equipment);
+        activity_detail_equipment_model = findViewById(R.id.activity_detail_equipment_model);
+        activity_detail_equipment_serial = findViewById(R.id.activity_detail_equipment_serial);
 
         setupToolbar();
         LocalSQlite = new DatabaseHelper(getApplicationContext());
 
-        String main_id = getIntent().getStringExtra("main_id");
-        updateUI(main_id);
-        populateListView1(main_id);
-
-    }
-
-    private void updateUI(String id){
-        ArrayList<String> valuesforUI;
-        valuesforUI = LocalSQlite.getMainMeasurementDetails(id);
-        if (valuesforUI.isEmpty()){
-            Log.d(TAG, "Query Empty");
-        }
-        else {
-            //up to 9 values in valuesforUI
-            detail_txt_id.setText(valuesforUI.get(0));
-            detail_txt_type.setText(valuesforUI.get(1));
-            detail_txt_date.setText(valuesforUI.get(2));
-            detail_txt_start.setText(valuesforUI.get(3));
-            detail_txt_end.setText(valuesforUI.get(4));
-            detail_txt_equipment.setText(valuesforUI.get(5));
-            detail_txt_serial.setText(valuesforUI.get(6));
-            detail_txt_client.setText(valuesforUI.get(7));
-            detail_txt_range.setText(valuesforUI.get(8));
-            detail_txt_period.setText(valuesforUI.get(9));
-        }
+        String id_main = getIntent().getStringExtra("id_main");
+        updateBaseUI(id_main);
+        /*
+        populateListView1(id_main);*/
 
     }
 
@@ -77,6 +72,39 @@ public class DetailActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
+
+    private void updateBaseUI(String id){
+        ArrayList<String> valuesforUI;
+        valuesforUI = LocalSQlite.getMainMeasurementDetails(id);
+        String activity_title;
+
+        if (!valuesforUI.isEmpty()){
+
+            activity_title = "ENSAYO #" + valuesforUI.get(0);
+
+            activitiy_detail_title.setText(activity_title);
+            activity_detail_status.setText(valuesforUI.get(12));
+            activity_detail_date.setText(valuesforUI.get(1));
+            activity_detail_starttime.setText(valuesforUI.get(2));
+            activity_detail_endtime.setText(valuesforUI.get(3));
+            activity_detail_tipo.setText(valuesforUI.get(4));
+            activity_detail_tensayo.setText(valuesforUI.get(5));
+            activity_detail_testabilizacion.setText(valuesforUI.get(6));
+            activity_detail_tcaptura.setText(valuesforUI.get(7));
+            activity_detail_client.setText(valuesforUI.get(11));
+            activity_detail_equipment.setText(valuesforUI.get(8));
+            activity_detail_equipment_model.setText(valuesforUI.get(9));
+            activity_detail_equipment_serial.setText(valuesforUI.get(10));
+
+        }
+        else {
+
+            Log.d(TAG, "Query Empty");
+
+        }
+
+    }
+
 
     private void populateListView1(String id){
         Log.d(TAG, "displaying data in the listview");

@@ -202,11 +202,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //SELECT QUERIES
-    public Cursor getData(){
+    public Cursor getRecentsData(){
+
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + TABLE1_NAME + " ORDER BY " + TABLE1_COL1 +
                 " DESC LIMIT 10";
+
         return db.rawQuery(query, null);
+
     }
 
     public Integer getAutoIncrementMeasurements(){
@@ -275,8 +278,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.add(data.getString(5));
             values.add(data.getString(6));
             values.add(data.getString(7));
-            values.add(data.getString(8) + " " + data.getString(9));
-            values.add(data.getString(10) + " " + data.getString(11));
+            values.add(data.getString(8));
+            values.add(data.getString(9));
+            values.add(data.getString(10));
+            values.add(data.getString(11));
+            values.add(data.getString(12));
         }
         else {
             values = null;

@@ -6,4 +6,6 @@
     <color name="sigcsa_primary">#9A6828</color>
     <color name="subtitles">#ffffff</color>
     <color name="mainbutton">#33cc00</color>
+    <color name="listadapter1_division">#f2f2f2</color>
+    <color name="listadapter1_text">#595959</color>
 </resources>

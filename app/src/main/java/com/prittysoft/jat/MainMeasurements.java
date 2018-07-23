@@ -2,18 +2,19 @@ package com.prittysoft.jat;
 
 
 public class MainMeasurements {
-    private String ID;
+    private String ID ;
     private String client;
     private String equipment;
     private String equipment_serial;
     private String date;
+    private String equipment_model;
 
-    public MainMeasurements(String ID, String client, String equipment, String equipment_serial, String date) {
+    MainMeasurements(String ID, String client, String equipment, String equipment_serial, String equipment_model) {
         this.ID = ID;
         this.client = client;
         this.equipment = equipment;
         this.equipment_serial = equipment_serial;
-        this.date = date;
+        this.equipment_model = equipment_model;
     }
 
     public String getID(){
@@ -34,6 +35,10 @@ public class MainMeasurements {
 
     public String getDate() {
         return date;
+    }
+
+    public String getEquipment_model() {
+        return equipment_model;
     }
 
     public void setClient(String client) {

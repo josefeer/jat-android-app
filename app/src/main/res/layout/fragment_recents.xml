@@ -1,36 +1,27 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RecentsFragment">
 
-    <android.support.constraint.ConstraintLayout
+    <TextView
+        android:id="@+id/fragment_recent_title"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:text="@string/fragment_recent_title"
+        android:background="@drawable/subtitle_gradient"
+        android:textColor="@color/subtitles"
+        android:textStyle="bold"
+        android:elevation="2dp"
+        android:layout_alignParentTop="true"/>
 
-        <TextView
-            android:id="@+id/fragment_recent_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:text="@string/fragment_recent_title"
-            android:background="@drawable/subtitle_gradient"
-            android:textColor="@color/subtitles"
-            android:textStyle="bold"
-            android:elevation="2dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+    <ListView
+        android:id="@+id/recent_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fragment_recent_title"/>
 
-        <ListView
-            android:id="@+id/recent_listview"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/fragment_recent_title"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-    </android.support.constraint.ConstraintLayout>
-
-</FrameLayout>
+</RelativeLayout>

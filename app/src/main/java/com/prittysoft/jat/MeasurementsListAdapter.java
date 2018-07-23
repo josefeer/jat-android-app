@@ -16,7 +16,7 @@ public class MeasurementsListAdapter extends ArrayAdapter<MainMeasurements> {
     private Context mContext;
     private int mResource;
 
-    public MeasurementsListAdapter(@NonNull Context context, int resource, @NonNull List<MainMeasurements> objects) {
+    MeasurementsListAdapter(@NonNull Context context, int resource, @NonNull List<MainMeasurements> objects) {
         super(context, resource, objects);
         mContext = context;
         mResource = resource;
@@ -30,45 +30,48 @@ public class MeasurementsListAdapter extends ArrayAdapter<MainMeasurements> {
         String client = getItem(position).getClient();
         String equipment = getItem(position).getEquipment();
         String equipment_serial = getItem(position).getEquipment_serial();
-        String date = getItem(position).getDate();
+        String equipment_model = getItem(position).getEquipment_model();
 
-
-        MainMeasurements values = new MainMeasurements(ID, client, equipment, equipment_serial,date);
+        MainMeasurements values = new MainMeasurements(ID, client, equipment, equipment_serial, equipment_model);
         ViewHolder holder;
 
         if (convertView == null){
+
             LayoutInflater inflater = LayoutInflater.from(mContext);
             convertView = inflater.inflate(mResource, parent, false);
             holder = new ViewHolder();
 
-            holder.client = convertView.findViewById(R.id.textView5);
-            holder.equipment = convertView.findViewById(R.id.textView6);
-            holder.equipment_serial = convertView.findViewById(R.id.textView7);
-            holder.date = convertView.findViewById(R.id.textView8);
+            holder.ID = convertView.findViewById(R.id.recent_adapter_id);
+            holder.equipment = convertView.findViewById(R.id.recent_adapter_equipment);
+            holder.equipment_model = convertView.findViewById(R.id.recent_adapter_model);
+            holder.equipment_serial = convertView.findViewById(R.id.recent_adapter_serial);
+            holder.equipment_client = convertView.findViewById(R.id.recent_adapter_client);
 
             convertView.setTag(holder);
+
         }
         else {
+
             holder = (ViewHolder) convertView.getTag();
+
         }
 
-        holder.client.setText(values.getClient());
+        holder.ID.setText(values.getID());
         holder.equipment.setText(values.getEquipment());
+        holder.equipment_model.setText(values.getEquipment_model());
         holder.equipment_serial.setText(values.getEquipment_serial());
-        holder.date.setText(values.getDate());
-
-
-
+        holder.equipment_client.setText(values.getClient());
 
         return convertView;
 
     }
 
     public static class ViewHolder{
-       TextView client;
-       TextView equipment;
-       TextView equipment_serial;
-       TextView date;
+        TextView ID;
+        TextView equipment;
+        TextView equipment_model;
+        TextView equipment_serial;
+        TextView equipment_client;
     }
 
 }

@@ -43,17 +43,23 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_bluetooth_settings">BluetoothSettingsActivity</string>
 
-    <string name="toolbar_detail_title">Detail</string>
-    <string name="lbl_starttime">Start Time:</string>
+    <string name="toolbar_detail_title">Informe Final</string>
+
+    <string name="lbl_starttime">HORA INICIO</string>
     <string name="lbl_id">ID:</string>
-    <string name="lbl_date">Date:</string>
-    <string name="lbl_endtime">End Time:</string>
-    <string name="lbl_equipment">Equipment:</string>
-    <string name="lbl_client">Client:</string>
-    <string name="lbl_serial">Serial:</string>
-    <string name="lbl_range">Range:</string>
-    <string name="lbl_period">Period:</string>
-    <string name="lbl_timestamp">Timestamp</string>
+    <string name="lbl_date">FECHA</string>
+    <string name="lbl_endtime">HORA FINAL</string>
+
+    <string name="lbl_equipment">EQUIPO:</string>
+    <string name="lbl_client">CLIENTE:</string>
+    <string name="lbl_serial">SERIE DEL EQUIPO:</string>
+    <string name="lbl_model">MODELO DEL EQUIPO:</string>
+
+    <string name="lbl_tipo">TIPO DE ENSAYO:</string>
+    <string name="lbl_tensayo">TIEMPO DEL ENSAYO:</string>
+    <string name="lbl_testabilizacion">TIEMPO DE ESTABILIZACIÓN:</string>
+    <string name="lbl_tcaptura">TIEMPO DE CAPTURA:</string>
+
     <string name="lbl_s1">S1</string>
     <string name="lbl_s2">S2</string>
     <string name="lbl_s3">S3</string>
@@ -69,9 +75,18 @@
     <string name="lbl_addfragment9">Capturar cada:</string>
     <string name="lbl_addfragment11">Modelo del Equipo:</string>
     <string name="lbl_addfragment11_hint">Ej. 619, Iso-Temp, Genérico, etc.</string>
-    <string name="lbl_addfragment_minutos">Minutos</string>
+    <string name="lbl_addfragment_minutos">Minuto(s)</string>
 
     <string name="lbl_search">Search</string>
     <string name="test">TEST</string>
+
+    <string name="lbl_adapter_id">ID</string>
+    <string name="lbl_adapter_datos">DATOS</string>
+
+    <string name="activity_detalle_title">Ensayo #0</string>
+    <string name="activity_detalle_subtitle1">SONDA 1</string>
+    <string name="activity_detalle_subcontainer_s1_lbl_time">TIEMPO</string>
+    <string name="activity_detalle_subcontainer_s1_lbl_temp">TEMPERATURA</string>
+    <string name="activity_detalle_subcontainer_s1_lbl_estadisticas">ESTADÍSTICAS</string>
 
 </resources>
