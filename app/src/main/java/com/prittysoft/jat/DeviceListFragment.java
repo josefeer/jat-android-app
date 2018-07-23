@@ -1,11 +1,13 @@
 package com.prittysoft.jat;
 
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -27,12 +30,15 @@ public class DeviceListFragment extends Fragment {
     Button btn_btserach;
     ListView device_list;
 
+    private static final String TAG = "DeviceListFragment";
+
     //bluetooth
     private BluetoothAdapter myBluetooth = null;
     public static String EXTRA_ADDRESS = "device_address";
 
-    //bundle for next fragment
-    Bundle bundle = new Bundle();
+    Context context;
+
+    Intent i;
 
 
     public DeviceListFragment() {
@@ -40,7 +46,13 @@ public class DeviceListFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_device_list, container, false);
@@ -52,12 +64,15 @@ public class DeviceListFragment extends Fragment {
 
         if (myBluetooth == null){
             //Show message that the device doesn't have  bluetooth adapter
-            Toast.makeText(getContext(), "Bluetooth Device not Available", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Dispositivo SIN bluetooth", Toast.LENGTH_LONG).show();
         }
         else if (!myBluetooth.isEnabled()){
             //Ask user to turn on bluetooth
             Intent turnBTon = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(turnBTon, 1);
+        }
+        else if(myBluetooth.isEnabled()){
+            pairedDevicesList();
         }
 
         btn_btserach.setOnClickListener(new View.OnClickListener() {
@@ -82,10 +97,10 @@ public class DeviceListFragment extends Fragment {
             }
         }
         else{
-            Toast.makeText(getContext(), "No paired devices found!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "NO se encontraron dispositivos!", Toast.LENGTH_LONG).show();
         }
 
-        final ArrayAdapter adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, list);
+        final ArrayAdapter adapter = new ArrayAdapter<>(this.context, android.R.layout.simple_list_item_1, list);
         device_list.setAdapter(adapter);
         device_list.setOnItemClickListener(myListClickListener); //Method called when the device from the list is clicked
 
@@ -97,13 +112,24 @@ public class DeviceListFragment extends Fragment {
             //Get the device MAC address, last 17 chars in the view
             String info = ((TextView) view).getText().toString();
             String address = info.substring(info.length() - 17);
-            bundle.putString(EXTRA_ADDRESS, address);
 
-            BluetoothSuccessFragment fragment = new BluetoothSuccessFragment();
-            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-            fragment.setArguments(bundle);
-            fragmentTransaction.replace(R.id.base_frame_b, fragment);
-            fragmentTransaction.commit();
+            BTasynk task = new BTasynk(context, address, new BTasynk.BTAsyncResponse() {
+                @Override
+                public void processFinish(boolean ConnectionStatus) {
+                    if (ConnectionStatus){
+                        Log.d(TAG, "AsynkTask Ended: Initiating BTservice");
+                        i = new Intent(context, BTservice.class);
+                        context.startService(i);
+                        ((Activity) context).finish();
+                    }
+                    else{
+                        Log.d(TAG, "AsynkTask Ended: Connection Failed!");
+                    }
+                }
+            });
+
+            task.execute();
+
 
         }
     };

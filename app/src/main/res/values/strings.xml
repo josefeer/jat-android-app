@@ -27,7 +27,7 @@
 
     <string name="btn_start">Iniciar Ensayo</string>
     <string name="btn_cancelar">Cancelar</string>
-    <string name="DeviceList_title">Device List</string>
+    <string name="DeviceList_title">Dispositivos Bluetooth</string>
     <string name="system_status_title">Estado del Sistema</string>
     <string name="addfragment_lbl_s1">Sensor 1:</string>
     <string name="addfragment_lbl_s2">Sensor 2:</string>

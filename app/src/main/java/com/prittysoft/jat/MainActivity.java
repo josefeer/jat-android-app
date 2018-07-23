@@ -126,8 +126,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 bluetooth_icon.setIcon(R.drawable.toolbar_bluetooth_disabled);
                 AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-                alertDialog.setTitle("Ops!");
-                alertDialog.setMessage("Device Desconnected");
+                alertDialog.setTitle("OOPS!");
+                alertDialog.setMessage("Dispositivo Desconectado!");
                 alertDialog.show();
 
             }

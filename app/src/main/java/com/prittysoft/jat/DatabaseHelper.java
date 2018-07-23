@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 
 public class DatabaseHelper extends SQLiteOpenHelper {
+
     private static final String TAG = "DatabaseHelper";
 
     /*DB tables*/
@@ -33,6 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE1_COL10 = "equipo_modelo";
     private static final String TABLE1_COL11 = "equipo_serial";
     private static final String TABLE1_COL12 = "equipo_cliente";
+    private static final String TABLE1_COL13 = "status";
 
     /*TABLE2 fields*/
     private static final String TABLE2_COL1 = "id_isotermos2";
@@ -68,7 +70,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             " INTEGER PRIMARY KEY AUTOINCREMENT, " + TABLE1_COL2 + " TEXT, " + TABLE1_COL3 +
             " TEXT, " + TABLE1_COL4 + " TEXT, " + TABLE1_COL5 + " TEXT, " + TABLE1_COL6 + " TEXT, "
             + TABLE1_COL7 + " TEXT, " + TABLE1_COL8 + " TEXT, "+ TABLE1_COL9 + " TEXT, "
-            + TABLE1_COL10 + " TEXT, " + TABLE1_COL11 + " TEXT, " + TABLE1_COL12 +" TEXT)";
+            + TABLE1_COL10 + " TEXT, " + TABLE1_COL11 + " TEXT, " + TABLE1_COL12 +" TEXT, " + TABLE1_COL13 + " TEXT)";
 
     private static final String CREATETABLE2 = "CREATE TABLE IF NOT EXISTS " + TABLE2_NAME + " (" + TABLE2_COL1 +
             " INTEGER PRIMARY KEY AUTOINCREMENT, " + TABLE2_COL2 + " INTEGER, " +
@@ -119,7 +121,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+
+    // INSERT QUERIES
     public boolean addDataTable1(String[] values){
+
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
@@ -160,23 +165,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean addDataTableSensorCalibration(String[] values){
+    public void addDataTable3(String[] values){
+
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(TABLE4_COL2, values[0]);
-        contentValues.put(TABLE4_COL3, values[1]);
-        contentValues.put(TABLE4_COL4, values[2]);
 
-        Log.d(TAG, "addDataTable2: Addding" + contentValues + " to " + TABLE4_NAME);
-        long result = db.insert(TABLE4_NAME, null, contentValues);
+        contentValues.put(TABLE3_COL2, values[0]);
+        contentValues.put(TABLE3_COL3, values[1]);
+        contentValues.put(TABLE3_COL4, values[2]);
+        contentValues.put(TABLE3_COL5, values[3]);
+        contentValues.put(TABLE3_COL6, values[4]);
+        contentValues.put(TABLE3_COL7, values[5]);
+        contentValues.put(TABLE3_COL8, values[6]);
+        contentValues.put(TABLE3_COL9, values[7]);
+        contentValues.put(TABLE3_COL10, values[8]);
+        contentValues.put(TABLE3_COL11, values[9]);
+        contentValues.put(TABLE3_COL12, values[10]);
 
-        if (result == -1){
-            return false;
-        }
-        else
-            return true;
+        db.insert(TABLE3_NAME, null, contentValues);
+        db.close();
+
     }
 
+    public void addDataTable4(String[] values){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(TABLE3_COL2, values[0]);
+        contentValues.put(TABLE3_COL3, values[1]);
+        contentValues.put(TABLE3_COL4, values[2]);
+
+        db.insert(TABLE4_NAME, null, contentValues);
+        db.close();
+
+    }
+
+    //SELECT QUERIES
     public Cursor getData(){
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + TABLE1_NAME + " ORDER BY " + TABLE1_COL1 +
@@ -200,17 +225,40 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return AutoIncrement;
     }
 
-    public void updateEndTimeTable1(Integer seq, String endtime){
-        SQLiteDatabase db = this.getWritableDatabase();
-        //String query = "UPDATE " + TABLE1_NAME + " set (" + TABLE1_COL5 + ") = ('" +
-          //      endtime + "') where " + TABLE1_COL1 + " = " + seq;
-        //db.execSQL(query);
-        ContentValues newValue = new ContentValues();
-        newValue.put("end_time", endtime);
-        db.update(TABLE1_NAME, newValue, "id_main ="+seq, null);
-        Log.d(TAG, "Update Succesfully");
+    public Cursor getSensorCalibrationDataDetails(String id){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM calibracionpatron WHERE id_main= " + id;
+        return db.rawQuery(query, null);
     }
 
+    // UPDATE QUERIES
+    public void updateTable1Complete(Integer seq, String endtime){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues newValue = new ContentValues();
+        newValue.put("end_time", endtime);
+        newValue.put("status", "COMPLETADO");
+
+        db.update(TABLE1_NAME, newValue, "id_main ="+seq, null);
+        db.close();
+
+    }
+
+    public void updateTable1Canceled(Integer seq, String endtime){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues newValue = new ContentValues();
+        newValue.put("end_time", endtime);
+        newValue.put("status", "CANCELADO");
+
+        db.update(TABLE1_NAME, newValue, "id_main ="+seq, null);
+        db.close();
+
+    }
+
+    // OTROS QUERIES
     public ArrayList<String> getMainMeasurementDetails(String id){
         ArrayList<String> values = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -240,10 +288,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return values;
     }
 
-    public Cursor getSensorCalibrationDataDetails(String id){
-        SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM calibracionpatron WHERE id_main= " + id;
-        return db.rawQuery(query, null);
-    }
 
 }

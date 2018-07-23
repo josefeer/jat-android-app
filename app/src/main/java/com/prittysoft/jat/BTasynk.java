@@ -19,7 +19,7 @@ public class BTasynk extends AsyncTask<Void, Void, Void> {
 
     private WeakReference<Context> weakContext;
     private ProgressDialog progress;
-    private String address = null;
+    private String address;
 
     //Bluetooth
     private BluetoothSocket BTSocket = null;
@@ -27,13 +27,15 @@ public class BTasynk extends AsyncTask<Void, Void, Void> {
     private static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private boolean ConnectSuccess = true;
 
-    private BTAsyncResponse delegate = null;
+    private BTAsyncResponse delegate;
 
-    public BTasynk(Context context, String address, BTAsyncResponse delegate) {
+    BTasynk(Context context, String address, BTAsyncResponse delegate) {
         weakContext = new WeakReference<>(context);
         this.address = address;
         this.delegate = delegate;
     }
+
+
 
     public interface BTAsyncResponse {
         void processFinish(boolean ConnectionSuccess);
@@ -41,7 +43,7 @@ public class BTasynk extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected void onPreExecute() {
-        progress = ProgressDialog.show(weakContext.get(), "Connecting...", "Please wait!!!");
+        progress = ProgressDialog.show(weakContext.get(), "Conectando...", "Espere un momento!");
     }
 
     @Override
@@ -72,13 +74,11 @@ public class BTasynk extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void result) {
         super.onPostExecute(result);
         if (!ConnectSuccess) {
-            msg("Connection Failed. Is it a SPP Bluetooth? Try again.");
-            //getActivity().getSupportFragmentManager().popBackStackImmediate();
-            //weakActivity.get().getFragmentManager().popBackStack();
+            msg("CONEXIÓN FALLÓ, intenta de nuevo");
             FragmentActivity fragmentActivity = (FragmentActivity) weakContext.get();
             fragmentActivity.getSupportFragmentManager().popBackStackImmediate();
         } else {
-            msg("Connected.");
+            msg("CONEXIÓN EXITOSA");
             isBTConnected = true;
             BTsocketHandler.setBTsocket(BTSocket);
         }

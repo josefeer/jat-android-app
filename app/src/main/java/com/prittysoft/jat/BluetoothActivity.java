@@ -16,4 +16,5 @@ public class BluetoothActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.base_frame_b, fragment);
         fragmentTransaction.commit();
     }
+
 }
