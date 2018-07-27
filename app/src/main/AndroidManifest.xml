@@ -19,24 +19,31 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".MainActivity" />
-
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".DetailActivity"
             android:parentActivityName=".MainActivity"
-            />
-
-        <activity android:name=".BluetoothActivity" />
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"/>
 
         <service
             android:name=".BTservice"
             android:exported="false" />
-
         <service
             android:name=".RegisterTempService"
             android:exported="false" />
 
+        <activity
+            android:name=".DetailSonda"
+            android:parentActivityName=".DetailActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".BluetoothActivity"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

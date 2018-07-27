@@ -31,8 +31,11 @@ public class MeasurementsListAdapter extends ArrayAdapter<MainMeasurements> {
         String equipment = getItem(position).getEquipment();
         String equipment_serial = getItem(position).getEquipment_serial();
         String equipment_model = getItem(position).getEquipment_model();
+        String type = getItem(position).getType();
 
-        MainMeasurements values = new MainMeasurements(ID, client, equipment, equipment_serial, equipment_model);
+        MainMeasurements values = new MainMeasurements(ID, client, equipment, equipment_serial,
+                equipment_model, type);
+
         ViewHolder holder;
 
         if (convertView == null){

@@ -425,8 +425,11 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/etxt_client"
                 android:layout_margin="20dp"
+                android:paddingStart="60dp"
+                android:paddingEnd="60dp"
                 android:background="@drawable/mainbutton"
                 android:enabled="false"
+                android:drawableStart="@drawable/ic_play"
                 android:text="@string/btn_start"
                 android:textColor="@color/subtitles"
                 android:textStyle="bold" />
@@ -440,18 +443,20 @@
                 android:background="@drawable/cancel_button"
                 android:enabled="false"
                 android:text="@string/btn_cancelar"
+                android:paddingStart="60dp"
+                android:paddingEnd="60dp"
+                android:drawableStart="@drawable/ic_stop"
                 android:textColor="@color/subtitles"
                 android:textStyle="bold" />
 
             <ProgressBar
                 android:id="@+id/progressBar"
-                style="?android:attr/progressBarStyleHorizontal"
+                style="@style/SigcsaProgressBar"
+                android:scaleY="7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/btn_cancelar"
-                android:layout_margin="20dp"
-                android:maxHeight="20dp"
-                android:minHeight="10dp" />
+                android:layout_margin="20dp"/>
 
         </RelativeLayout>
 

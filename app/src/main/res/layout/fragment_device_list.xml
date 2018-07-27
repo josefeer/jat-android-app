@@ -38,8 +38,12 @@
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"
             android:textColor="@color/subtitles"
-            android:text="Search"
-            android:background="@drawable/mainbutton"
+            android:text="@string/bluetooth_search"
+            android:textStyle="bold"
+            android:paddingStart="50dp"
+            android:paddingEnd="50dp"
+            android:drawableStart="@drawable/ic_refresh"
+            android:background="@drawable/search_button"
             android:layout_below="@id/device_list"/>
 
     </RelativeLayout>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailSonda">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_detail_sonda"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/toolbar_gradient"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+        <TextView
+            android:id="@+id/toolbar_detail_sonda_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/toolbar_detail_sonda_title"
+            android:textColor="@color/subtitles"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/activity_detail_sonda_subtitle1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar_detail_sonda"
+        android:background="@drawable/subtitle_gradient"
+        android:elevation="2dp"
+        android:textAlignment="center"
+        android:text="@string/activity_detalle_sonda_subtitle1"
+        android:textColor="@color/subtitles"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/activity_detail_sonda_lbl_numero"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_below="@id/activity_detail_sonda_subtitle1"
+        android:layout_alignParentStart="true"
+        android:textAlignment="center"
+        android:text="@string/activity_detalle_sonda_lbl_numero"/>
+
+    <TextView
+        android:id="@+id/activity_detail_sonda_lbl_tiempo"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_below="@id/activity_detail_sonda_subtitle1"
+        android:layout_centerInParent="true"
+        android:textAlignment="center"
+        android:text="@string/activity_detalle_sonda_lbl_tiempo"/>
+
+    <TextView
+        android:id="@+id/activity_detail_sonda_lbl_temperatura"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_below="@id/activity_detail_sonda_subtitle1"
+        android:layout_alignParentEnd="true"
+        android:textAlignment="center"
+        android:text="@string/activity_detalle_sonda_lbl_temperatura"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/sonda_subcontainer1"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_below="@id/activity_detail_sonda_lbl_temperatura">
+
+        <ListView
+            android:id="@+id/activity_detail_sonda_listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/activity_detail_sonda_subtitle2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sonda_subcontainer1"
+        android:background="@drawable/subtitle_gradient"
+        android:elevation="2dp"
+        android:textAlignment="center"
+        android:text="@string/activity_detalle_sonda_subtitle2"
+        android:textColor="@color/subtitles"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/activity_detail_sonda_subtcontainer2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_detail_sonda_subtitle2">
+
+        <TextView
+            android:id="@+id/activity_detail_sonda_lbl_tpromedio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_alignParentTop="true"
+            android:text="@string/activity_detalle_sonda_lbl_tpromedio"/>
+
+        <TextView
+            android:id="@+id/activity_detail_sonda_tpromedio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_toEndOf="@id/activity_detail_sonda_lbl_tpromedio"
+            android:textStyle="bold"
+            android:layout_alignParentEnd="true"
+            android:text="@string/NA"/>
+
+        <TextView
+            android:id="@+id/activity_detail_sonda_lbl_tmax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_below="@id/activity_detail_sonda_lbl_tpromedio"
+            android:text="@string/activity_detalle_sonda_lbl_tmax"/>
+
+        <TextView
+            android:id="@+id/activity_detail_sonda_tmax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_below="@id/activity_detail_sonda_tpromedio"
+            android:layout_toEndOf="@id/activity_detail_sonda_lbl_tpromedio"
+            android:textStyle="bold"
+            android:layout_alignParentEnd="true"
+            android:text="@string/NA"/>
+
+        <TextView
+            android:id="@+id/activity_detail_sonda_lbl_tmin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_below="@id/activity_detail_sonda_lbl_tmax"
+            android:text="@string/activity_detalle_sonda_lbl_tmin"/>
+
+        <TextView
+            android:id="@+id/activity_detail_sonda_tmin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_below="@id/activity_detail_sonda_tmax"
+            android:layout_toEndOf="@id/activity_detail_sonda_lbl_tpromedio"
+            android:textStyle="bold"
+            android:layout_alignParentEnd="true"
+            android:text="@string/NA"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

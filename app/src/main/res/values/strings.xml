@@ -27,7 +27,7 @@
 
     <string name="btn_start">Iniciar Ensayo</string>
     <string name="btn_cancelar">Cancelar</string>
-    <string name="DeviceList_title">Dispositivos Bluetooth</string>
+    <string name="DeviceList_title">DISPOSITIVOS</string>
     <string name="system_status_title">Estado del Sistema</string>
     <string name="addfragment_lbl_s1">Sensor 1:</string>
     <string name="addfragment_lbl_s2">Sensor 2:</string>
@@ -44,11 +44,13 @@
     <string name="title_activity_bluetooth_settings">BluetoothSettingsActivity</string>
 
     <string name="toolbar_detail_title">Informe Final</string>
+    <string name="toolbar_bluetooth_title">Conexiones Bluetooth</string>
+    <string name="toolbar_detail_sonda_title">Mediciones Sonda 0</string>
 
-    <string name="lbl_starttime">HORA INICIO</string>
+    <string name="lbl_starttime">FECHA INICIO:</string>
     <string name="lbl_id">ID:</string>
     <string name="lbl_date">FECHA</string>
-    <string name="lbl_endtime">HORA FINAL</string>
+    <string name="lbl_endtime">FECHA FIN:</string>
 
     <string name="lbl_equipment">EQUIPO:</string>
     <string name="lbl_client">CLIENTE:</string>
@@ -77,16 +79,37 @@
     <string name="lbl_addfragment11_hint">Ej. 619, Iso-Temp, Genérico, etc.</string>
     <string name="lbl_addfragment_minutos">Minuto(s)</string>
 
-    <string name="lbl_search">Search</string>
+    <string name="lbl_search">BUSCAR</string>
     <string name="test">TEST</string>
 
     <string name="lbl_adapter_id">ID</string>
     <string name="lbl_adapter_datos">DATOS</string>
 
     <string name="activity_detalle_title">Ensayo #0</string>
-    <string name="activity_detalle_subtitle1">SONDA 1</string>
+    <string name="activity_detalle_subtitle1">SONDAS</string>
     <string name="activity_detalle_subcontainer_s1_lbl_time">TIEMPO</string>
     <string name="activity_detalle_subcontainer_s1_lbl_temp">TEMPERATURA</string>
     <string name="activity_detalle_subcontainer_s1_lbl_estadisticas">ESTADÍSTICAS</string>
+
+    <string name="activity_detalle_sonda_subtitle1">UNIDAD: CELSIUS (°C)</string>
+    <string name="activity_detalle_sonda_subtitle2">ESTADÍSTICAS</string>
+    <string name="activity_detalle_sonda_lbl_numero">NUMERO</string>
+    <string name="activity_detalle_sonda_lbl_tiempo">TIEMPO</string>
+    <string name="activity_detalle_sonda_lbl_temperatura">TEMPERATURA</string>
+    <string name="activity_detalle_sonda_lbl_tpromedio">TEMPERATURA PROMEDIO:</string>
+    <string name="activity_detalle_sonda_lbl_tmax">TEMPERATURA MAXIMA:</string>
+    <string name="activity_detalle_sonda_lbl_tmin">TEMPERATURA MINIMA:</string>
+
+    <string name="activity_detalle_btn_s1">SONDA 1</string>
+    <string name="activity_detalle_btn_s2">SONDA 2</string>
+    <string name="activity_detalle_btn_s3">SONDA 3</string>
+    <string name="activity_detalle_btn_s4">SONDA 4</string>
+    <string name="activity_detalle_btn_s5">SONDA 5</string>
+    <string name="activity_detalle_btn_s6">SONDA 6</string>
+    <string name="activity_detalle_btn_s7">SONDA 7</string>
+    <string name="activity_detalle_btn_s8">SONDA 8</string>
+    <string name="activity_detalle_btn_s9">SONDA 9</string>
+
+    <string name="bluetooth_search">ACTUALIZAR</string>
 
 </resources>

@@ -7,7 +7,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -16,42 +17,55 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
+
     private static final String TAG = "MainActivity";
     private MenuItem bluetooth_icon;
 
-    private RecentsFragment fragment1 = new RecentsFragment();
-    private AddFragment fragment2 = new AddFragment();
-    private RegisterFragment fragment3 = new RegisterFragment();
+    RecentsFragment fragment1 = new RecentsFragment();
+    final AddFragment fragment2 = new AddFragment();
+    final RegisterFragment fragment3 = new RegisterFragment();
+
+    final FragmentManager fm = getSupportFragmentManager();
+
+    Fragment active = fragment1;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
             switch (item.getItemId()) {
+
                 case R.id.navigation_recents:
-                    FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction1.replace(R.id.base_frame, fragment1);
-                    fragmentTransaction1.commit();
+                    fm.beginTransaction().remove(fragment1).commit();
+                    fragment1 = new RecentsFragment();
+                    fm.beginTransaction().hide(active).commit();
+                    fm.beginTransaction().add(R.id.base_frame, fragment1, "1").commit();
+
+                    active = fragment1;
                     return true;
+
                 case R.id.navigation_add:
-                    FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction2.replace(R.id.base_frame, fragment2);
-                    fragmentTransaction2.commit();
+                    fm.beginTransaction().hide(active).show(fragment2).commit();
+                    active = fragment2;
                     return true;
+
                 case R.id.navigation_registers:
-                    FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction3.replace(R.id.base_frame, fragment3);
-                    fragmentTransaction3.commit();
+                    fm.beginTransaction().hide(active).show(fragment3).commit();
+                    active = fragment3;
                     return true;
+
             }
+
             return false;
+
         }
+
     };
 
     private void setupToolbar(){
@@ -72,16 +86,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setupToolbar();
-        setupBottomNav();
+            setupToolbar();
+            setupBottomNav();
 
-        RecentsFragment fragment1 = new RecentsFragment();
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.base_frame, fragment1);
-        fragmentTransaction.commit();
+            BottomNavigationView navigation = findViewById(R.id.navigation);
+            navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        IntentFilter filter = new IntentFilter("work");
-        LocalBroadcastManager.getInstance(this).registerReceiver(BTserviceReceiver, filter);
+            fm.beginTransaction().add(R.id.base_frame, fragment3, "3").hide(fragment3).commit();
+            fm.beginTransaction().add(R.id.base_frame, fragment2, "2").hide(fragment2).commit();
+            fm.beginTransaction().add(R.id.base_frame, fragment1, "1").commit();
+
+            IntentFilter filter = new IntentFilter("work");
+            LocalBroadcastManager.getInstance(this).registerReceiver(BTserviceReceiver, filter);
+
     }
 
     @Override
@@ -99,11 +116,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         switch (item.getItemId()){
+
             case R.id.toolbar_bluetooth:
                 Intent BTActivity = new Intent(this, BluetoothActivity.class);
                 startActivity(BTActivity);
                 return true;
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -138,4 +158,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
     };
+
 }

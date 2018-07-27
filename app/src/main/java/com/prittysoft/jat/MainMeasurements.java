@@ -8,13 +8,16 @@ public class MainMeasurements {
     private String equipment_serial;
     private String date;
     private String equipment_model;
+    private String type;
 
-    MainMeasurements(String ID, String client, String equipment, String equipment_serial, String equipment_model) {
+    MainMeasurements(String ID, String client, String equipment, String equipment_serial,
+                     String equipment_model, String type) {
         this.ID = ID;
         this.client = client;
         this.equipment = equipment;
         this.equipment_serial = equipment_serial;
         this.equipment_model = equipment_model;
+        this.type = type;
     }
 
     public String getID(){
@@ -39,6 +42,10 @@ public class MainMeasurements {
 
     public String getEquipment_model() {
         return equipment_model;
+    }
+
+    public String getType() {
+        return type;
     }
 
     public void setClient(String client) {

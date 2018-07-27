@@ -103,7 +103,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/activity_detail_lbl_starttime"
             android:layout_centerInParent="true"
-            android:layout_marginStart="10dp"
             android:text="@string/NA"
             android:textAlignment="center"
             android:textStyle="bold" />
@@ -113,6 +112,7 @@
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
             android:layout_below="@id/activity_detail_lbl_endtime"
             android:text="@string/NA"
             android:textAlignment="center"
@@ -306,107 +306,179 @@
             android:id="@+id/activity_detail_client"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_below="@id/activity_detail_subdivision2"
-            android:layout_toEndOf="@id/activity_detail_lbl_equipment_client"
             android:layout_alignParentEnd="true"
+            android:layout_below="@id/activity_detail_subdivision2"
+            android:layout_margin="10dp"
+            android:layout_toEndOf="@id/activity_detail_lbl_equipment_client"
+            android:text="@string/NA"
             android:textAlignment="textEnd"
-            android:textStyle="bold"
-            android:text="@string/NA"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/activity_detail_equipment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_below="@id/activity_detail_lbl_equipment_client"
-            android:layout_toEndOf="@id/activity_detail_lbl_equipment"
             android:layout_alignParentEnd="true"
+            android:layout_below="@id/activity_detail_lbl_equipment_client"
+            android:layout_margin="10dp"
+            android:layout_toEndOf="@id/activity_detail_lbl_equipment"
+            android:text="@string/NA"
             android:textAlignment="textEnd"
-            android:textStyle="bold"
-            android:text="@string/NA"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/activity_detail_equipment_model"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_below="@id/activity_detail_equipment"
-            android:layout_toEndOf="@id/activity_detail_lbl_equipment_model"
             android:layout_alignParentEnd="true"
+            android:layout_below="@id/activity_detail_equipment"
+            android:layout_margin="10dp"
+            android:layout_toEndOf="@id/activity_detail_lbl_equipment_model"
+            android:text="@string/NA"
             android:textAlignment="textEnd"
-            android:textStyle="bold"
-            android:text="@string/NA"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/activity_detail_equipment_serial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_below="@id/activity_detail_lbl_equipment_model"
-            android:layout_toEndOf="@id/activity_detail_lbl_equipment_serial"
             android:layout_alignParentEnd="true"
+            android:layout_below="@id/activity_detail_lbl_equipment_model"
+            android:layout_margin="10dp"
+            android:layout_toEndOf="@id/activity_detail_lbl_equipment_serial"
+            android:text="@string/NA"
             android:textAlignment="textEnd"
-            android:textStyle="bold"
-            android:text="@string/NA"/>
+            android:textStyle="bold" />
 
-        <!-- SONDA 1 -->
+        <!-- SUBDIVISION 3-->
 
-        <RelativeLayout
-            android:id="@+id/subcontainer_s1"
+        <TextView
+            android:id="@+id/activity_detail_subdivision3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="5dp"
+            android:layout_below="@id/activity_detail_equipment_serial"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:layout_below="@id/activity_detail_equipment_serial">
+            android:background="@drawable/subtitle_gradient" />
 
-            <TextView
-                android:id="@+id/activity_detail_subcontainer_s1_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:background="@drawable/subtitle_gradient"
-                android:elevation="2dp"
-                android:gravity="center"
-                android:text="@string/activity_detalle_subtitle1"
-                android:textColor="@color/subtitles"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
+        <!-- BOTONES -->
 
-            <TextView
-                android:id="@+id/activity_detail_subcontainer_s1_lbl_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_below="@id/activity_detail_subcontainer_s1_title"
-                android:layout_alignParentStart="true"
-                android:textAlignment="center"
-                android:text="@string/activity_detalle_subcontainer_s1_lbl_time"/>
+        <Button
+            android:id="@+id/activity_detail_btn_s1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/sensorsbuttons"
+            android:textColor="@color/subtitles"
+            android:textStyle="bold"
+            android:layout_below="@id/activity_detail_subdivision3"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/activity_detalle_btn_s1" />
 
-            <TextView
-                android:id="@+id/activity_detail_subcontainer_s1_lbl_temp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:layout_below="@id/activity_detail_subcontainer_s1_title"
-                android:layout_toEndOf="@id/activity_detail_subcontainer_s1_lbl_time"
-                android:textAlignment="center"
-                android:text="@string/activity_detalle_subcontainer_s1_lbl_temp"/>
+        <Button
+            android:id="@+id/activity_detail_btn_s2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/sensorsbuttons"
+            android:textColor="@color/subtitles"
+            android:textStyle="bold"
+            android:layout_below="@id/activity_detail_btn_s1"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/activity_detalle_btn_s2" />
 
-            <TextView
-                android:id="@+id/activity_detail_subcontainer_s1_lbl_estadisticas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_below="@id/activity_detail_subcontainer_s1_title"
-                android:layout_toEndOf="@id/activity_detail_subcontainer_s1_lbl_temp"
-                android:textAlignment="center"
-                android:layout_alignParentEnd="true"
-                android:text="@string/activity_detalle_subcontainer_s1_lbl_estadisticas"/>
+        <Button
+            android:id="@+id/activity_detail_btn_s3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/sensorsbuttons"
+            android:textColor="@color/subtitles"
+            android:textStyle="bold"
+            android:layout_below="@id/activity_detail_btn_s2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/activity_detalle_btn_s3" />
 
-        </RelativeLayout>
+        <Button
+            android:id="@+id/activity_detail_btn_s4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/sensorsbuttons"
+            android:textColor="@color/subtitles"
+            android:textStyle="bold"
+            android:layout_below="@id/activity_detail_btn_s3"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/activity_detalle_btn_s4" />
+
+        <Button
+            android:id="@+id/activity_detail_btn_s5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/sensorsbuttons"
+            android:textColor="@color/subtitles"
+            android:textStyle="bold"
+            android:layout_below="@id/activity_detail_btn_s4"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/activity_detalle_btn_s3" />
+
+        <Button
+            android:id="@+id/activity_detail_btn_s6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/sensorsbuttons"
+            android:textColor="@color/subtitles"
+            android:textStyle="bold"
+            android:layout_below="@id/activity_detail_btn_s5"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/activity_detalle_btn_s6" />
+
+        <Button
+            android:id="@+id/activity_detail_btn_s7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/sensorsbuttons"
+            android:textColor="@color/subtitles"
+            android:textStyle="bold"
+            android:layout_below="@id/activity_detail_btn_s6"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/activity_detalle_btn_s7" />
+
+        <Button
+            android:id="@+id/activity_detail_btn_s8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/sensorsbuttons"
+            android:textColor="@color/subtitles"
+            android:textStyle="bold"
+            android:layout_below="@id/activity_detail_btn_s7"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/activity_detalle_btn_s8" />
+
+        <Button
+            android:id="@+id/activity_detail_btn_s9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/sensorsbuttons"
+            android:textColor="@color/subtitles"
+            android:textStyle="bold"
+            android:layout_below="@id/activity_detail_btn_s8"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/activity_detalle_btn_s9" />
 
     </RelativeLayout>
 

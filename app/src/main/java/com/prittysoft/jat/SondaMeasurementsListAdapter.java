@@ -11,12 +11,12 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class SensorCalibrationListAdapter extends ArrayAdapter<SensorCalibration> {
+public class SondaMeasurementsListAdapter extends ArrayAdapter<SondaMeasurements> {
 
     private Context mContext;
     private int mResource;
 
-    public SensorCalibrationListAdapter(@NonNull Context context, int resource, @NonNull List<SensorCalibration> objects) {
+    SondaMeasurementsListAdapter(@NonNull Context context, int resource, @NonNull List<SondaMeasurements> objects) {
         super(context, resource, objects);
         mContext = context;
         mResource = resource;
@@ -25,36 +25,46 @@ public class SensorCalibrationListAdapter extends ArrayAdapter<SensorCalibration
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        String main_id = getItem(position).getMain_id();
-        String timestamp = getItem(position).getTimestamp();
-        String s1 = getItem(position).getS1();
 
-        SensorCalibration values = new SensorCalibration(main_id, timestamp, s1);
+        String number = getItem(position).getNumber();
+        String time = getItem(position).getTime();
+        String temperature = getItem(position).getTemperature();
+
+        SondaMeasurements values = new SondaMeasurements(number, time, temperature);
+
         ViewHolder holder;
 
         if (convertView == null){
+
             LayoutInflater inflater = LayoutInflater.from(mContext);
             convertView = inflater.inflate(mResource, parent, false);
             holder = new ViewHolder();
 
-            holder.timestamp = convertView.findViewById(R.id.adapter_timestamp);
-            holder.s1 = convertView.findViewById(R.id.adapter_s1);
+            holder.number = convertView.findViewById(R.id.sonda_adapter_lbl_number);
+            holder.time = convertView.findViewById(R.id.sonda_adapter_lbl_time);
+            holder.temperature = convertView.findViewById(R.id.sonda_adapter_lbl_temperature);
 
             convertView.setTag(holder);
+
         }
         else {
+
             holder = (ViewHolder) convertView.getTag();
+
         }
 
-        holder.timestamp.setText(values.getTimestamp());
-        holder.s1.setText(values.getS1());
+        holder.number.setText(values.getNumber());
+        holder.time.setText(values.getTime());
+        holder.temperature.setText(values.getTemperature());
 
         return convertView;
 
     }
 
     public static class ViewHolder{
-        TextView timestamp;
-        TextView s1;
+        TextView number;
+        TextView time;
+        TextView temperature;
     }
+
 }

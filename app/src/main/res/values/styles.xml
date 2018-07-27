@@ -8,4 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="SigcsaDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">#d5a15d</item>
+    </style>
+
+    <style name="SigcsaProgressBar" parent="android:Widget.Material.Light.ProgressBar.Horizontal">
+        <item name="colorAccent">#d5a15d</item>
+    </style>
+
 </resources>

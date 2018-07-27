@@ -212,6 +212,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public Cursor getDataBetweenDates(String startdate, String enddate){
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "select * from " + TABLE1_NAME + " where date between '" + startdate +
+                "' and '" + enddate +"' order by " + TABLE1_COL1 + " DESC";
+
+        return db.rawQuery(query, null);
+
+    }
+
     public Integer getAutoIncrementMeasurements(){
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT seq FROM sqlite_sequence WHERE name=\"mainmeasurements\"";
@@ -228,10 +238,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return AutoIncrement;
     }
 
-    public Cursor getSensorCalibrationDataDetails(String id){
+    public Cursor getSondaValues(String id, String table, String SondaNumber){
+
+        String Sonda = "S" + SondaNumber;
+
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM calibracionpatron WHERE id_main= " + id;
+        String query = "SELECT timestamp, " + Sonda + " FROM " + table + " WHERE id_main = " + id;
+
         return db.rawQuery(query, null);
+
     }
 
     // UPDATE QUERIES

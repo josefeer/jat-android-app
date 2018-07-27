@@ -59,11 +59,14 @@ public class RecentsFragment extends Fragment {
 
             values = new MainMeasurements(data.getString(0) ,
                     data.getString(11), data.getString(8),
-                    data.getString(10), data.getString(9));
+                    data.getString(10), data.getString(9),
+                    data.getString(4));
 
             listData.add(values);
 
         }
+
+        data.close();
 
         final MeasurementsListAdapter adapter = new MeasurementsListAdapter(this.context,
                 R.layout.custom_adapter_listview, listData);
@@ -75,8 +78,10 @@ public class RecentsFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 String positionID= listData.get(position).getID();
+                String typevalue = listData.get(position).getType();
                 Intent DetailActivity = new Intent(getActivity(), DetailActivity.class);
                 DetailActivity.putExtra("id_main", positionID);
+                DetailActivity.putExtra("type", typevalue);
                 startActivity(DetailActivity);
 
             }
