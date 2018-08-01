@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class DetailSonda extends AppCompatActivity {
 
@@ -121,7 +122,7 @@ public class DetailSonda extends AppCompatActivity {
         if (tpromedio != 0){
 
             tpromedio = tpromedio / promdiv;
-            textprom = Double.toString(tpromedio);
+            textprom = String.format(Locale.US,"%.2f", tpromedio);
             activity_detail_sonda_tpromedio.setText(textprom);
 
 

@@ -47,10 +47,10 @@
     <string name="toolbar_bluetooth_title">Conexiones Bluetooth</string>
     <string name="toolbar_detail_sonda_title">Mediciones Sonda 0</string>
 
-    <string name="lbl_starttime">FECHA INICIO:</string>
+    <string name="lbl_starttime">HORA INICIO:</string>
     <string name="lbl_id">ID:</string>
     <string name="lbl_date">FECHA</string>
-    <string name="lbl_endtime">FECHA FIN:</string>
+    <string name="lbl_endtime">HORA FIN:</string>
 
     <string name="lbl_equipment">EQUIPO:</string>
     <string name="lbl_client">CLIENTE:</string>
